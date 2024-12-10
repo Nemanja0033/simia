@@ -5,7 +5,7 @@ const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [isAuth, setIsAuth] = useState<boolean>(JSON.parse(localStorage.getItem("isAuth") || "false"));
-    const [userName, setUserName] = useState<string>(localStorage.getItem("userName") || "");
+    const [userName, setUserName] = useState<string>(localStorage.getItem("userName") || "Undefined");
   
     useEffect(() => {
       localStorage.setItem("isAuth", JSON.stringify(isAuth));

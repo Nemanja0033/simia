@@ -1,8 +1,10 @@
-import React from 'react'
+import LoginForm from '../componnets/LoginForm'
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <div className='flex justify-center'>
+      <LoginForm />
+    </div>
   )
 }
 
