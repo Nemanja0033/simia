@@ -74,7 +74,7 @@ const LoginForm = () => {
         onClick={
           !isSignUp
             ? () => signUpWithEmail(setIsAuth, setUserName, email, password, username)
-            : () => loginWithEmail(setIsAuth, setUserName, email, password)
+            : () => loginWithEmail(setIsAuth, email, password)
         }
         className="w-full bg-primary text-white py-2 mt-4 rounded-md hover:bg-primary-dark transition duration-200"
       >

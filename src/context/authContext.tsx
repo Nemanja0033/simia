@@ -4,6 +4,8 @@ import { auth } from "../../config/firebase";
 
 type AuthContextProps = {
     isAuth: boolean;
+    setIsAuth: any,
+    setUserName: any,
     userName: string | null;
     userID: string | null;
 };
@@ -32,7 +34,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ isAuth, userName, userID }}>
+        <AuthContext.Provider value={{ isAuth, userName, userID, setIsAuth, setUserName }}>
             {children}
         </AuthContext.Provider>
     );
