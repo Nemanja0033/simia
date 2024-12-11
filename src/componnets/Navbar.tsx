@@ -13,24 +13,24 @@ const Navbar = () => {
             <span>Blog-App</span>
         </div>
 
-        <div className="md:flex hidden gap-6 text-md">
+        <div className="md:flex hidden gap-6 text-md  tracking-wider">
             <Link className="hover:text-primary" to={'/'}>Home</Link>
             <Link className="hover:text-primary" to={'/groups'}>Groups</Link>
             {!isAuth ? <Link className="hover:text-primary" to={'/login'}><button className="">Sign Up</button></Link>
             :
-            <div className="flex items-center gap-2 hover:text-primary">
+            <div className="flex items-center gap-2 hover:text-primary cursor-pointer tracking-wider">
               <button onClick={logout}>Logout</button>
-              <LogOutIcon />
+              <LogOutIcon size={18} />
             </div>
             }
         </div>
 
         <div className="md:hidden flex items-center">
-          {!isAuth ? <Link className="hover:text-primary" to={'/login'}><button className="">Sign Up</button></Link>
+          {!isAuth ? <Link className="hover:text-primary" to={'/login'}><button className="text-primary">Sign Up</button></Link>
             :
-            <div className="flex items-center gap-2 hover:text-primary">
+            <div className="flex items-center gap-2 hover:text-primary tracking-wider">
               <button onClick={logout}>Logout</button>
-              <LogOutIcon />
+              <LogOutIcon size={18} />
             </div>
             }
         </div>

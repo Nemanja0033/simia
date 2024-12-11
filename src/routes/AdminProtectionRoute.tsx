@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { auth } from '../../config/firebase';
 import { db } from '../../config/firebase';
 import { query, where, getDocs, collection } from 'firebase/firestore';
-import Loader from '../loader/Loader';
+import Loader from '../ui/Loader';
 
 const AdminProtectionRoute = ({ children }: { children: JSX.Element }) => {
   const [isAdmin, setIsAdmin] = useState(false);
