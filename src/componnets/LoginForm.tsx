@@ -16,11 +16,11 @@ const LoginForm = () => {
     }
 
   return (
-    <div className="w-full z-10 h-screen bg-gray-100 flex justify-center items-center overflow-hidden">
-  <div className="bg-white md:w-1/3 w-11/12 p-6 rounded-lg shadow-lg">
+    <div className="w-full z-10 h-screen flex justify-center items-center overflow-hidden">
+  <div className="md:w-1/3 w-11/12 p-6 rounded-lg shadow-lg">
     
     <div className="text-center mb-6">
-      <h1 className="text-lg font-semibold text-gray-800">
+      <h1 className="text-lg font-semibold">
         {!isSignUp 
           ? 'Sign up and join groups and share content' 
           : 'Welcome back!'}
@@ -31,9 +31,9 @@ const LoginForm = () => {
     {
         !isSignUp ? (
             <div>
-                <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
+                <label htmlFor="username" className="block text-sm font-medium">Username</label>
                 <input
-                className="w-full border border-gray-300 rounded-md p-2 mt-1 focus:ring-2 focus:ring-primary focus:outline-none"
+                className="w-full border bg-transparent border-gray-700 rounded-md p-2 mt-1 focus:ring-2 focus:ring-primary focus:outline-none"
                 type="text"
                 name="username"
                 onChange={(e) => setUsername(e.target.value)}
@@ -44,18 +44,18 @@ const LoginForm = () => {
         ''
     }
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+        <label htmlFor="email" className="block text-sm font-medium">Email</label>
         <input
-          className="w-full border border-gray-300 rounded-md p-2 mt-1 focus:ring-2 focus:ring-primary focus:outline-none"
+          className="w-full border border-gray-300 bg-transparent rounded-md p-2 mt-1 focus:ring-2 focus:ring-primary focus:outline-none"
           type="email"
           name="email"
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
       <div>
-        <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+        <label htmlFor="password" className="block text-sm font-medium">Password</label>
         <input
-          className="w-full border border-gray-300 rounded-md p-2 mt-1 focus:ring-2 focus:ring-primary focus:outline-none"
+          className="w-full border border-gray-300 bg-transparent rounded-md p-2 mt-1 focus:ring-2 focus:ring-primary focus:outline-none"
           type="password"
           name="password"
           onChange={(e) => setPassword(e.target.value)}

@@ -1,27 +1,16 @@
 import { useEffect, useState } from 'react';
 import { auth } from '../../config/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import { useAuth } from '../context/authContext';
 
 const Home = () => {
   const [userEmail, setUserEmail] = useState<string | null>(null);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUserEmail(user.email);
-      } else {
-        setUserEmail(null);
-      }
-    });
-
-    // Očisti listener kada se komponenta uništi
-    return () => unsubscribe();
-  }, []);
+  const {userName, isAuth} = useAuth()
 
   return (
     <div>
       Home
-      <p>{userEmail ? `Welcome, ${userEmail}` : 'No user is logged in.'}</p>
+      <p>{isAuth ? `Welcome, ${userName}` : 'No user is logged in.'}</p>
     </div>
   );
 };
