@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { auth } from '../../config/firebase';
 import { db } from '../../config/firebase';
 import { query, where, getDocs, collection } from 'firebase/firestore';
+import Loader from '../loader/Loader';
 
 const AdminProtectionRoute = ({ children }: { children: JSX.Element }) => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -56,7 +57,7 @@ const AdminProtectionRoute = ({ children }: { children: JSX.Element }) => {
 
   if (loading) {
     console.log("Loading state...");
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (isAdmin) {
@@ -64,7 +65,7 @@ const AdminProtectionRoute = ({ children }: { children: JSX.Element }) => {
   }
 
   console.log("Redirecting to login...");
-  return <Navigate to="/login" />;
+  return <Navigate to="/unauthorized" />;
 };
 
 export default AdminProtectionRoute;

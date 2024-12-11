@@ -7,6 +7,7 @@ import BottomNav from "./componnets/BottomNav"
 import Groups from "./pages/Groups"
 import ProtectedRoute from "./routes/ProtectedRoute"
 import AdminProtectionRoute from "./routes/AdminProtectionRoute"
+import UnauthorizedRoute from "./routes/UnauthorizedRoute"
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/admin" element={<AdminProtectionRoute><Admin /></AdminProtectionRoute>} />
         <Route path="/groups" element={<ProtectedRoute><Groups /></ProtectedRoute>} />
         <Route path="/login" element={<Login />} />
+        <Route path="/unauthorized" element={<UnauthorizedRoute />} />
       </Routes>
       <BottomNav />
     </BrowserRouter>

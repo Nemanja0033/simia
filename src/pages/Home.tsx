@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-import { auth } from '../../config/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
+import { useState } from 'react';
 import { useAuth } from '../context/authContext';
 
 const Home = () => {
