@@ -7,6 +7,8 @@ export const createUser = async (username: string) => {
         await addDoc(collectionRef, {
             username: username,
             userID: auth.currentUser?.uid,
+            admin: false,
+            email: auth.currentUser?.email,
         });
         console.log("User successfully added!");
     } catch (error) {
