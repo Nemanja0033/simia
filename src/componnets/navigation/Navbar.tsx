@@ -2,10 +2,12 @@ import { LogOutIcon } from "lucide-react"
 import { Link } from "react-router-dom"
 import { useAuth } from "../../context/authContext"
 import { logout } from "../../api/logout"
+import { useAdmin } from "../../context/adminContext"
 
 const Navbar = () => {
 
-  const { isAuth } = useAuth()
+  const { isAuth } = useAuth();
+  const { isAdmin} = useAdmin();
 
   return (
     <nav className="w-full h-[60px] bg-base-100 shadow-md flex justify-around items-center">
@@ -23,6 +25,9 @@ const Navbar = () => {
               <LogOutIcon size={18} />
             </div>
             }
+            {isAdmin ? <Link className="hover:text-primary font-bold" to={'/admin'}>Admin</Link>
+            :
+            ''}
         </div>
 
         <div className="md:hidden flex items-center">
