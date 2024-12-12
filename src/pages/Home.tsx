@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import { useAuth } from '../context/authContext';
 
 const Home = () => {
-  const [userEmail, setUserEmail] = useState<string | null>(null);
   const {userName, isAuth} = useAuth()
 
   return (
