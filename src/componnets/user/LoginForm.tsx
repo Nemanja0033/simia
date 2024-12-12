@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { loginWithEmail } from "../api/login";
-import { signUpWithEmail } from "../api/signIn";
-import { useAuth } from "../context/authContext";
+import { loginWithEmail } from "../../api/login";
+import { signUpWithEmail } from "../../api/signIn";
+import { useAuth } from "../../context/authContext";
 
 
 const LoginForm = () => {

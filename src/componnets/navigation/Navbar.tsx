@@ -1,7 +1,7 @@
 import { LogOutIcon } from "lucide-react"
 import { Link } from "react-router-dom"
-import { useAuth } from "../context/authContext"
-import { logout } from "../api/logout"
+import { useAuth } from "../../context/authContext"
+import { logout } from "../../api/logout"
 
 const Navbar = () => {
 
