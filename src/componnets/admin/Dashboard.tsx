@@ -2,7 +2,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react"
 import { db } from "../../../config/firebase";
 import Loader from "../../ui/Loader";
-import { History, Users } from "lucide-react";
+import { Group, History, Users } from "lucide-react";
 
 const Dashboard = () => {
   const [users, setUsers] = useState<any[]>([]);
@@ -34,9 +34,17 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-     fetchUsers();
-     fetchHistory();
-  }, [])
+    const callFunctions = async () => {
+      try {
+        await Promise.all([fetchHistory(), fetchUsers()]);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+  
+    callFunctions();
+  }, []);
+  
 
   if(loading){
     return <Loader />
@@ -44,9 +52,9 @@ const Dashboard = () => {
 
   return (
     <div className="w-full h-screen md:flex flex-row justify-around items-center">
-        <div className="md:w-1/3 flex-row w-full h-96 overflow-auto m-3 rounded-md shadow-md">
+        <div className="md:w-1/3 w-full h-96 m-3 rounded-md shadow-md">
              <h1 className="text-center font-bold flex justify-center gap-2 items-center text-primary"><Users />Users ({users.length})</h1>
-             <div className="flex-row justify-self-center mt-6">
+             <div className="flex-row overflow-auto h-80 justify-self-center mt-6">
               {users.map((u) => (
                 <ul key={u.userID} className="mb-6 text-center">
                   <li><b>Username</b>: <i>{u.username}</i></li>
@@ -56,9 +64,9 @@ const Dashboard = () => {
               ))}
              </div>
         </div>
-        <div className="md:w-1/3 flex-row w-full h-96 overflow-auto m-3 rounded-md shadow-md">
-        <h1 className="text-center font-bold flex justify-center gap-2 items-center text-primary"><History />Login History</h1>
-        <div className="flex-row justify-self-center mt-6">
+        <div className="md:w-1/3 flex-row w-full h-96 m-3 rounded-md shadow-md">
+        <h1 className="text-center font-bold flex justify-center gap-2 items-center text-primary"><History />Login History ({history.length})</h1>
+        <div className="flex-row overflow-auto h-80 justify-self-center mt-6">
               {history.map((h) => (
                 <ul key={h.email} className="mb-6 text-center">
                   <li><b>Email</b>: <i>{h.email}</i></li>
@@ -67,8 +75,8 @@ const Dashboard = () => {
               ))}
              </div>
         </div>
-        <div className="md:w-1/3 flex-row w-full h-96 overflow-auto m-3 rounded-md shadow-md">
-            <h1 className="text-center font-bold">Groups</h1> 
+        <div className="md:w-1/3 flex-row w-full h-96 m-3 rounded-md shadow-md">
+            <h1 className="text-center font-bold flex justify-center gap-2 items-center text-primary"><Group />Groups</h1> 
         </div>
     </div>
   )
