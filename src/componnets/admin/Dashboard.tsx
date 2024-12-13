@@ -3,6 +3,8 @@ import { useEffect, useState } from "react"
 import { db } from "../../../config/firebase";
 import Loader from "../../ui/Loader";
 import { Check, Group, History, Users, X } from "lucide-react";
+import { activateUser } from "../../api/activateUser";
+import { deactivateUser } from "../../api/deactivateUser";
 
 const Dashboard = () => {
   const [users, setUsers] = useState<any[]>([]);
@@ -58,11 +60,12 @@ const Dashboard = () => {
               {users.map((u) => (
                 <ul key={u.userID} className="mb-6 text-center">
                   <li><b>Username</b>: <i>{u.username}</i></li>
-                  <li><b>User ID</b>: <i>{u.userID}</i></li>
                   <li><b>User Email</b>: <i>{u.email}</i></li>
+                  <li><b>User ID</b>: <i>{u.userID}</i></li>
+                  <li><b>User Status</b>: <i>{u.status}</i></li>
                   <div className="flex justify-center gap-2">
-                  <button className="flex gap-2 text-primary hover:text-green-700"><Check />Approve</button>
-                  <button className="flex gap-2 text-red-400 hover:text-red-600"><X />Decline</button>
+                  <button onClick={() => activateUser(u.userID)} className="flex gap-2 text-primary hover:text-green-700"><Check />Approve</button>
+                  <button onClick={() => deactivateUser(u.userID)} className="flex gap-2 text-red-400 hover:text-red-600"><X />Decline</button>
                   </div>
                 </ul>
               ))}
