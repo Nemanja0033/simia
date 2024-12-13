@@ -16,7 +16,6 @@ export const AdminProvider = ({children}: {children: ReactNode}) => {
     useEffect(() => {
         const checkIfUserIsAdmin = async (userID: string) => {
           try {
-            console.log("Checking if user is admin with userID:", userID);
             const q = query(collection(db, 'users'), where('userID', '==', userID));
             const querySnapshot = await getDocs(q);
     
@@ -29,7 +28,6 @@ export const AdminProvider = ({children}: {children: ReactNode}) => {
     
             querySnapshot.forEach((doc) => {
               const data = doc.data().admin;
-              console.log('Admin status in db:', data);
               if (data === "true") {
                 setIsAdmin(true);
               } else {
@@ -47,7 +45,6 @@ export const AdminProvider = ({children}: {children: ReactNode}) => {
     
         const unsubscribe = auth.onAuthStateChanged((user) => {
           if (user) {
-            console.log('User UID onAuthStateChanged:', user.uid);
             checkIfUserIsAdmin(user.uid);
           } else {
             console.log('No user signed in');

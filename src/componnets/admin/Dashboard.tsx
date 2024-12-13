@@ -2,7 +2,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react"
 import { db } from "../../../config/firebase";
 import Loader from "../../ui/Loader";
-import { Group, History, Users } from "lucide-react";
+import { Check, Group, History, Users, X } from "lucide-react";
 
 const Dashboard = () => {
   const [users, setUsers] = useState<any[]>([]);
@@ -60,6 +60,10 @@ const Dashboard = () => {
                   <li><b>Username</b>: <i>{u.username}</i></li>
                   <li><b>User ID</b>: <i>{u.userID}</i></li>
                   <li><b>User Email</b>: <i>{u.email}</i></li>
+                  <div className="flex justify-center gap-2">
+                  <button className="flex gap-2 text-primary hover:text-green-700"><Check />Approve</button>
+                  <button className="flex gap-2 text-red-400 hover:text-red-600"><X />Decline</button>
+                  </div>
                 </ul>
               ))}
              </div>
