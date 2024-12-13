@@ -64,8 +64,8 @@ const Dashboard = () => {
                   <li><b>User ID</b>: <i>{u.userID}</i></li>
                   <li><b>User Status</b>: <i>{u.status}</i></li>
                   <div className="flex justify-center gap-2">
-                  <button onClick={() => activateUser(u.userID)} className="flex gap-2 text-primary hover:text-green-700"><Check />Approve</button>
-                  <button onClick={() => deactivateUser(u.userID)} className="flex gap-2 text-red-400 hover:text-red-600"><X />Decline</button>
+                  <button onClick={() => activateUser(u.userID)} className="flex gap-2 text-primary hover:text-green-700"><Check />Enable</button>
+                  <button onClick={() => deactivateUser(u.userID)} className="flex gap-2 text-red-400 hover:text-red-600"><X />Disable</button>
                   </div>
                 </ul>
               ))}

@@ -3,9 +3,9 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
-    const { isAuth } = useAuth();
+    const { isActive } = useAuth();
 
-    if (!isAuth) {
+    if (!isActive) {
         return <Navigate to="/login" />;
     }
 

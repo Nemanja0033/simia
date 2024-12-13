@@ -56,7 +56,7 @@ const Navbar = () => {
         )}
         {isAdmin ? (
           <Link
-            className='hover:text-primary font-bold pl-3 border-l flex gap-2'
+            className='text-primary font-bold pl-3 border-l border-primary flex gap-2'
             to="/admin"
           >
             <ShieldEllipsis />
