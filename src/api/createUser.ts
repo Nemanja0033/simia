@@ -8,6 +8,7 @@ export const createUser = async (username: string) => {
             username: username,
             userID: auth.currentUser?.uid,
             admin: false,
+            status: "pending",
             email: auth.currentUser?.email,
         });
         console.log("User successfully added!");

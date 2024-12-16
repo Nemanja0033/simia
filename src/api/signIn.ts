@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../../config/firebase';
 import { createUser } from "./createUser";
+import { trackLoginHistory } from "./trackLoginHistory";
 
 // Email and password signup method
 export const signUpWithEmail = async (
@@ -16,6 +17,7 @@ export const signUpWithEmail = async (
         setIsAuth(true);
         setUserName(username);
         await createUser(username);
+        await trackLoginHistory();
         location.href = '/';
     } catch (error) {
         alert(`${email} is currently in use or invalid.`);
