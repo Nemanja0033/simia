@@ -8,7 +8,6 @@ export const deleteRequest = async (userID: string) => {
         const querySnapshot = await getDocs(q);
         const deletePromises = querySnapshot.docs.map((doc) => deleteDoc(doc.ref));
         await Promise.all(deletePromises);
-        location.reload();
     } catch (error) {
         console.error("Error deleting documents: ", error);
     }

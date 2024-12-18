@@ -10,8 +10,6 @@ export const activateUser = async (userID: string) => {
     querySnapshot.forEach(async (userDoc) => {
       const userRef = doc(db, 'users', userDoc.id); 
       await updateDoc(userRef, { status: "active" });
-      alert('The user is enabled');
-      location.reload();
     });
 
     console.log(`User with ID ${userID} has been activated.`);

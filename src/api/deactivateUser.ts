@@ -10,8 +10,6 @@ export const deactivateUser = async (userID: string) => {
     querySnapshot.forEach(async (userDoc) => {
       const userRef = doc(db, 'users', userDoc.id); 
       await updateDoc(userRef, { status: "inactive" });
-      alert('Acount disabled');
-      location.reload();
     });
 
     console.log(`User with ID ${userID} has been activated.`);

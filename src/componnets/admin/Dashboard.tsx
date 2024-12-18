@@ -61,7 +61,7 @@ const Dashboard = () => {
     };
   
     callFunctions();
-  }, []);
+  }, [activeUsers,pendingUsers,history]);
   
 
   if(loading){
