@@ -8,6 +8,7 @@ import Groups from "./pages/Groups"
 import ProtectedRoute from "./routes/ProtectedRoute"
 import AdminProtectionRoute from "./routes/AdminProtectionRoute"
 import UnauthorizedRoute from "./routes/UnauthorizedRoute"
+import CreateGroup from "./pages/CreateGroup"
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/admin" element={<AdminProtectionRoute><Admin /></AdminProtectionRoute>} />
         <Route path="/groups" element={<ProtectedRoute><Groups /></ProtectedRoute>} />
         <Route path="/login" element={<Login />} />
+        <Route path="/creategroup" element={<CreateGroup />} />
         <Route path="/unauthorized" element={<UnauthorizedRoute />} />
       </Routes>
       <BottomNav />

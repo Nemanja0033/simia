@@ -10,6 +10,8 @@ export const createUser = async (username: string) => {
             admin: false,
             status: "pending",
             email: auth.currentUser?.email,
+            group: '',
+            moderator: '',
         });
         console.log("User successfully added!");
     } catch (error) {
