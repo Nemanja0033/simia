@@ -20,7 +20,7 @@ const LoginForm = () => {
   <div className="md:w-1/3 w-11/12 p-6 rounded-lg shadow-lg">
     
     <div className="text-center mb-6">
-      <h1 className="text-lg font-semibold">
+      <h1 className="text-lg font-bold text-primary">
         {!isSignUp 
           ? 'Sign up and join groups and share content' 
           : 'Welcome back!'}
@@ -65,7 +65,7 @@ const LoginForm = () => {
     
     <div className="mt-4 text-center">
       <span
-        className="text-sm text-gray-500 cursor-pointer hover:underline"
+        className="text-sm text-primary  cursor-pointer hover:underline"
         onClick={handleStateChange}
       >
         {!isSignUp ? 'Already have an account?' : 'Create New Account'}
