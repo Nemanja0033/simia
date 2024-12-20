@@ -8,7 +8,8 @@ export const createGroup = async (name: string, description: string) => {
         name: name,
         description: description,
         moderator: moderator,
-        members: [moderator,]
+        members: [moderator,],
+        groupID: auth.currentUser?.uid,
     });
     alert("Group succesfully created!");
 }

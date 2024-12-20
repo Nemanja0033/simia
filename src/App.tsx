@@ -9,6 +9,7 @@ import ProtectedRoute from "./routes/ProtectedRoute"
 import AdminProtectionRoute from "./routes/AdminProtectionRoute"
 import UnauthorizedRoute from "./routes/UnauthorizedRoute"
 import CreateGroup from "./pages/CreateGroup"
+import GroupFeed from "./pages/GroupFeed"
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/creategroup" element={<CreateGroup />} />
         <Route path="/unauthorized" element={<UnauthorizedRoute />} />
+        <Route path="/group/:groupID" element={<GroupFeed />} />
       </Routes>
       <BottomNav />
     </BrowserRouter>
