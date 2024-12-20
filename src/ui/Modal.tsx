@@ -1,4 +1,4 @@
-const Modal = () => {
+const Modal = (icon: any, content: any) => {
   const openModal = () => {
     const modal = document.getElementById('my_modal_2') as HTMLDialogElement | null;
     if (modal) {
@@ -12,12 +12,13 @@ const Modal = () => {
     <div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
       <button className="btn" onClick={openModal}>
-        Open Modal
+        {icon}
       </button>
       <dialog id="my_modal_2" className="modal">
         <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">Press ESC key or click outside to close</p>
+          <div>
+            {content}
+          </div>
         </div>
         <form method="dialog" className="modal-backdrop">
           <button>Close</button>
