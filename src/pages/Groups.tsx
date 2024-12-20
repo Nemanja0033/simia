@@ -26,7 +26,7 @@ const Groups = () => {
   }
 
   return (
-    <div className="w-full h-screen flex justify-center">
+    <div className="w-full h-screen flex justify-center md:mt-16 mt-32">
       <div className="flex-row mt-6">
         <div className="flex justify-center items-center">
           <Link to={'/creategroup'}>

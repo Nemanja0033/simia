@@ -18,7 +18,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="w-full h-[60px] bg-base-100 shadow-md flex justify-around items-center">
+    <nav className="w-full h-[70px] backdrop-blur-md bg-transparent fixed top-0 bg-base-100 shadow-md flex justify-around items-center">
       {/* Logo */}
       <div className="flex justify-center text-xl font-bold text-primary">
         <span>Blog-App</span>

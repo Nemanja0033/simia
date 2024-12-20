@@ -4,7 +4,7 @@ const Home = () => {
   const {userName, isAuth} = useAuth()
 
   return (
-    <div>
+    <div className='md:mt-20 mt-32'>
       Home
       <p>{isAuth ? `Welcome, ${userName}` : 'No user is logged in.'}</p>
     </div>

@@ -93,7 +93,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="w-full h-screen md:flex flex-row justify-around items-center">
+    <div className="w-full h-screen md:flex flex-row justify-around items-center md:mt-10 mt-32">
         <div className="md:w-1/3 w-full h-96 m-3 rounded-md shadow-md">
              <h1 className="text-center font-bold flex justify-center gap-2 items-center text-primary"><Users />Users ({activeUsers.length})</h1>
              <div className="flex justify-center mt-3 items-center gap-2">
@@ -154,12 +154,12 @@ const Dashboard = () => {
              <div className="flex justify-center mt-3 items-center gap-2">
                 <input onChange={(e) => {setGroupSearch(e.target.value)}} className="focus:ring-2 focus:ring-primary focus:outline-none rounded-md border border-primary" type="text" placeholder="    Search group by name" />
              </div>
-             <div className="flex-row overflow-auto h-72 justify-self-center mt-6">
+             <div className="flex-row w-full overflow-auto h-72 justify-self-center mt-6">
               {groups.filter((item) => groupSearch.toLowerCase() === ''
                 ? item
                 : item.name.toLowerCase().includes(groupSearch.toLowerCase())
               ).map((g) => (
-                <div className="flex-row w-full h-auto">
+                <div className="flex-row w-full h-auto shadow-md mb-3">
                   <div className="flex justify-center">
                     <span className="font-bold text-primary">{g.name}</span>
                   </div>
