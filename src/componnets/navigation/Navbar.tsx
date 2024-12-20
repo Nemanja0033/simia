@@ -1,9 +1,10 @@
-import { LogOutIcon, ShieldEllipsis } from "lucide-react";
+import { LogOutIcon } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import { logout } from "../../api/logout";
 import { useAdmin } from "../../context/adminContext";
 import Loader from "../../ui/Loader";
+import ThemeToggler from "../../ui/Theme";
 
 const Navbar = () => {
   const { isAuth } = useAuth();
@@ -38,10 +39,11 @@ const Navbar = () => {
           </div>
         )}
         {isAdmin && (
-          <Link className="text-primary font-bold pl-3 border-l border-primary flex gap-2" to="/admin">
-            <ShieldEllipsis /> Admin
+          <Link className="text-primary font-bold" to="/admin">
+          Admin
           </Link>
         )}
+        <ThemeToggler />
       </div>
   
       {/* Links for smaller screens */}

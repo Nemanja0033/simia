@@ -4,19 +4,26 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { db } from "../../config/firebase"
 import GruopCard from "../componnets/user/GruopCard"
+import Loader from "../ui/Loader"
 
 const Groups = () => {
   const [groups, setGroups] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchGroups = async () => {
       const groupsCollectionRef = collection(db, "groups");
       const data = await getDocs(groupsCollectionRef);
       setGroups(data.docs.map((doc) => ({ ...doc.data(), id: doc.id})));
+      setLoading(false);
     }
     
     fetchGroups();
   }, [groups]);
+
+  if(loading){
+    return <Loader />
+  }
 
   return (
     <div className="w-full h-screen flex justify-center">

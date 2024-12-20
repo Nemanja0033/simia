@@ -2,7 +2,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react"
 import { db } from "../../../config/firebase";
 import Loader from "../../ui/Loader";
-import { AlarmClockCheck, Check, Group, History, Search, Trash, Users, X } from "lucide-react";
+import { AlarmClockCheck, Check, Group, History, Trash, Users, X } from "lucide-react";
 import { activateUser } from "../../api/activateUser";
 import { deactivateUser } from "../../api/deactivateUser";
 import { deleteRequest } from "../../api/deleteRequest";
@@ -71,20 +71,6 @@ const Dashboard = () => {
     }
   };
 
-  const searchGroups = (name: string) => {
-    const group = groups.find(
-      (g) => g.name.toLowerCase() === name.toLowerCase()
-    );
-    setGroups(group ? [group] : []);
-  };
-
-  const searchUser = (username: string) => {
-    const user = activeUsers.find(
-      (u) => u.username.toLowerCase() === username.toLowerCase()
-    );
-    setActiveUsers(user ? [user] : []);
-  };
-
   useEffect(() => {
       const callFunctions = async () => {
         try {
@@ -112,10 +98,13 @@ const Dashboard = () => {
              <h1 className="text-center font-bold flex justify-center gap-2 items-center text-primary"><Users />Users ({activeUsers.length})</h1>
              <div className="flex justify-center mt-3 items-center gap-2">
                 <input onChange={(e) => {setUserSearch(e.target.value)}} className="focus:ring-2 focus:ring-primary focus:outline-none rounded-md border border-primary" type="text" placeholder="Search user by username" />
-                <button onClick={() => searchUser(userSearch)}><Search className="text-primary cursor-pointer hover:scale-105" /></button>
              </div>
              <div className="flex-row overflow-auto h-72 justify-self-center mt-6">
-              {activeUsers.map((u) => (
+              {activeUsers.filter((item) =>
+                  userSearch.toLowerCase() === ""
+                  ? true
+                  : item.username.toLowerCase().includes(userSearch.toLowerCase())
+                ).map((u) => (
                 <ul key={u.userID} className="mb-6 text-center">
                   <li><b>Username</b>: <i>{u.username}</i></li>
                   <li><b>User Email</b>: <i>{u.email}</i></li>
@@ -164,10 +153,12 @@ const Dashboard = () => {
              <h1 className="text-center font-bold flex justify-center gap-2 items-center text-primary"><Group />Groups ({groups.length})</h1>
              <div className="flex justify-center mt-3 items-center gap-2">
                 <input onChange={(e) => {setGroupSearch(e.target.value)}} className="focus:ring-2 focus:ring-primary focus:outline-none rounded-md border border-primary" type="text" placeholder="    Search group by name" />
-                <button onClick={() => searchGroups(groupSearch)}><Search className="text-primary cursor-pointer hover:scale-105" /></button>
              </div>
              <div className="flex-row overflow-auto h-72 justify-self-center mt-6">
-              {groups.map((g) => (
+              {groups.filter((item) => groupSearch.toLowerCase() === ''
+                ? item
+                : item.name.toLowerCase().includes(groupSearch.toLowerCase())
+              ).map((g) => (
                 <div className="flex-row w-full h-auto">
                   <div className="flex justify-center">
                     <span className="font-bold text-primary">{g.name}</span>
