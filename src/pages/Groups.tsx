@@ -19,7 +19,7 @@ const Groups = () => {
     }
     
     fetchGroups();
-  }, [groups]);
+  }, []);
 
   if(loading){
     return <Loader />

@@ -12,6 +12,8 @@ const GroupFeed = () => {
     const [feed, setFeed] = useState<any[]>([]);
     const { isMember } = useMember();
 
+    console.log('member',isMember)
+
     useEffect(() => {
         const fetchGroupFeed = async () => {
             const groupFeedCollectionRef = collection(db, "groups");
@@ -22,7 +24,7 @@ const GroupFeed = () => {
         }
 
         fetchGroupFeed();
-    }, [])
+    }, [groupID])
 
     if(loading){
         return <Loader />
