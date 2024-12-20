@@ -26,11 +26,14 @@ const GroupFeed = () => {
             <div className="flex w-full justify-center">
                 <nav className="md:w-1/2 w-full flex justify-around h-[50px] rounded-md shadow-md gap-4 items-center">
                 <b className="text-primary text-xl flex gap-2 items-center">{f.name} <span className="flex items-center text-sm"><Users size={16} />({f.members.length})</span></b> 
+                <div className="flex gap-3">
                 {f.members.length < 2 ? 
                 <button disabled className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none">+ NEW BLOG POST</button> 
                 :
                 <button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none">+ NEW BLOG POST</button> 
-                }              
+                }
+                <button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none">Post to feed</button>               
+                </div>               
                 </nav>
             </div>
         ))}
