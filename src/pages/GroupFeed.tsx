@@ -41,6 +41,7 @@ const GroupFeed = () => {
                         <button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none">+ NEW BLOG POST</button> 
                         }
                         <button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none">Post to feed</button>               
+                        
                         </div>               
                     </nav>
                 </div>

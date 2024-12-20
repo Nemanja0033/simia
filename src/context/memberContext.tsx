@@ -2,13 +2,15 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { auth, db } from "../../config/firebase";
 
+type MemberContextProps = {
+    isMember: string;
+}
 
-
-const MemberContext = createContext<boolean| undefined>(undefined);
+const MemberContext = createContext<MemberContextProps | undefined>(undefined);
 
 export const MemberProvider = ({children}: {children: ReactNode}) => {
 
-    const [isMember, setIsMember] = useState<boolean>(false);
+    const [isMember, setIsMember] = useState<string>("");
 
     useEffect(() => {
         async function fetchMember () {
@@ -17,16 +19,13 @@ export const MemberProvider = ({children}: {children: ReactNode}) => {
 
             if (querySnapshot.empty) {
                 console.log('User document does not exist');
-                setIsMember(false);
                 return;
               }
       
               querySnapshot.forEach((doc) => {
                 const data = doc.data().member;
-                if (data === doc.data().name) {
-                  setIsMember(true);
-                } else {
-                  setIsMember(false);
+                if(data){
+                  setIsMember(data)
                 }
               });
             }
@@ -34,7 +33,7 @@ export const MemberProvider = ({children}: {children: ReactNode}) => {
     }, []);
 
     return(
-        <MemberContext.Provider value={isMember}>
+        <MemberContext.Provider value={{isMember}}>
             {children}
         </MemberContext.Provider>
     )
