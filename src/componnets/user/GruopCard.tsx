@@ -1,7 +1,12 @@
-import { DoorOpenIcon, Users } from "lucide-react"
+import { DoorClosedIcon, DoorOpenIcon, Users } from "lucide-react"
 import { Link } from "react-router-dom"
+import { groupRequest } from "../../api/groupRequest"
+import { useMember } from "../../context/memberContext"
 
 const GruopCard = ({name, description, members, groupID}: {name: string, description: string, members: [], groupID:string}) => {
+
+  const { isMember } = useMember();
+
   return (
     <div className="lg:w-64 w-full h-auto shadow-lg flex-row mt-12">
         <div className="flex justify-center mb-2">
@@ -14,7 +19,15 @@ const GruopCard = ({name, description, members, groupID}: {name: string, descrip
             <p className="text-md text-center text-gray-500">{description}</p>
         </div>
         <div className="flex justify-center mb-3">
-           <Link to={`/group/${groupID}`}><button className="btn-sm btn btn-neutral border-none text-white bg-primary hover:text-primary">Join Group <DoorOpenIcon /></button></Link>
+          {isMember === name ?
+          (
+            <Link to={`/group/${groupID}`}><button className="btn-sm btn btn-neutral border-none text-white bg-primary hover:text-primary">Enter Group <DoorOpenIcon /></button></Link>
+          )
+          :
+          (
+            <button onClick={() => groupRequest(name)} className="btn-sm btn btn-neutral border-none text-white bg-primary hover:text-primary">Request Enter <DoorClosedIcon /></button>
+          )
+        }
         </div>
     </div>
   )

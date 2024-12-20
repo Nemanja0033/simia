@@ -10,9 +10,9 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <AuthProvider>
       <AdminProvider>
-        <MemberProvider>
-          <App />
-        </MemberProvider>
+          <MemberProvider>
+            <App />
+          </MemberProvider>
       </AdminProvider>
     </AuthProvider>
   </StrictMode>,
