@@ -5,7 +5,6 @@ import { auth, db } from "../../config/firebase";
 import { Info, UserCheck, Users } from "lucide-react";
 import Loader from "../ui/Loader";
 import { useMember } from "../context/memberContext";
-import Modal from "../ui/Modal";
 
 const GroupFeed = () => {
     const { groupID } = useParams<{ groupID: string }>();
