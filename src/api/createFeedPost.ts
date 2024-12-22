@@ -9,7 +9,9 @@ export const createFeedPost = async (heading: string, content: string) => {
         content: content,
         author: auth.currentUser?.displayName,
         createdAt: new Date().toLocaleString('en-US', {
-            weekday: 'long',
+            month: 'short',
+            day: '2-digit',
+            hour12: false,
             hour: '2-digit',
             minute: '2-digit',
           }),

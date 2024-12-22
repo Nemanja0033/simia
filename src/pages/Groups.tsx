@@ -34,7 +34,7 @@ const Groups = () => {
           </Link>
         </div>
 
-        <div className={`grid gap-8 justify-evenly ${groups.length <= 4 ? 'grid-cols-4' : 'md:grid-cols-3 grid-cols-1'}`}>
+        <div className={`grid gap-8 justify-evenly ${groups.length <= 4 ? 'md:grid-cols-4 grid-cols-1' : 'md:grid-cols-3 grid-cols-1'}`}>
           {groups.map((g) => (
             <GruopCard name={g.name} description={g.description} members={g.members} groupID={g.groupID} />
           ))}
