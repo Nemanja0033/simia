@@ -2,17 +2,26 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { auth, db } from "../../config/firebase";
-import { Info, UserCheck, Users } from "lucide-react";
+import { Check, Info, ShieldCheck, Users } from "lucide-react";
 import Loader from "../ui/Loader";
 import { useMember } from "../context/memberContext";
+import { acceptMember } from "../api/acceptMember";
 
 const GroupFeed = () => {
     const { groupID } = useParams<{ groupID: string }>();
     const [loading, setLoading] = useState<boolean>(true);
     const [feed, setFeed] = useState<any[]>([]);
+    const [memberRequest, setMemeberRequest] = useState<any[]>([]);
     const { isMember } = useMember();
 
-    console.log('member',isMember)
+    const IS_MEMBER = (name: string) => isMember === name;
+    const IS_MODERATOR = (id: string) => auth.currentUser?.uid === id;
+
+    async function fetchMemberRequests (groupName: string){
+      const q = query(collection(db, 'users'), where("group", "==", groupName + 'pending'));
+      const data = await getDocs(q);
+      setMemeberRequest(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    }
 
     useEffect(() => {
         const fetchGroupFeed = async () => {
@@ -25,6 +34,7 @@ const GroupFeed = () => {
 
         fetchGroupFeed();
     }, [groupID]);
+
 
     const openModal = () => {
         const modal = document.getElementById('my_modal_2') as HTMLDialogElement | null;
@@ -42,7 +52,7 @@ const GroupFeed = () => {
   return (
     <div>
         {feed.map((f) => (
-           isMember === f.name ?
+           IS_MEMBER(f.name) ? //check is user a member of this group
            (
             <div className="w-full flex-row mt-20">
                 <div className="flex w-full justify-center">
@@ -55,15 +65,19 @@ const GroupFeed = () => {
                         <button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none">+ NEW BLOG POST</button> 
                         }
                         <button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none">Post to feed</button>               
-                        {auth.currentUser?.uid === f.groupID ?
+                        {IS_MODERATOR(f.groupID) ? // check is current user a moderator of group
                         <div className="flex items-center">
-                        <button className="btn btn-xs btn-neutral bg-primary text-white hover:text:primary" onClick={openModal}><UserCheck /></button>
+                        <button className="btn btn-xs btn-neutral border-none bg-primary text-white hover:text:primary" onClick={() => fetchMemberRequests(f.name)} onDoubleClick={openModal}><ShieldCheck /></button>
                         <dialog id="my_modal_2" className="modal">
                           <div className="modal-box">
                             <div className="ml-12">
-                            <span className="font-bold text-primary text-xl">Members</span>
-                            {f.members.map((m: string) => (
-                                <li><i>{m}</i></li>
+                            <p className="font-bold text-primary text-xl text-center">Member Requests</p>
+                            {memberRequest.map((m) => (
+                              <div className="flex justify-center gap-3 items-center text-md mt-3">
+                                <span className="font-bold">{m.username}</span>
+                                <i className="text-sm">{m.email}</i>
+                                <button className="text-primary hover:text-green-500" onClick={() => acceptMember(m.userID, f.name, m.username, f.groupID)}><Check /></button>
+                              </div>
                             ))}
                             </div>
                           </div>
