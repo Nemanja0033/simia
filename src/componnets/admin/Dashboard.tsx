@@ -159,13 +159,17 @@ const Dashboard = () => {
                 ? item
                 : item.name.toLowerCase().includes(groupSearch.toLowerCase())
               ).map((g) => (
-                <div className="flex-row w-full h-auto shadow-md mb-3">
+                <div className="flex-row w-full h-auto mb-3">
                   <div className="flex justify-center">
                     <span className="font-bold text-primary">{g.name}</span>
                   </div>
                   <h1 className="text-center font-semibold">Members ({g.members.length})</h1>
-                  <div className="h-32 flex justify-center">
-                    <li>{g.members}</li>
+                  <div className="h-32 justify-center">
+                    {g.members.map((member: string, index: number) => (
+                      <ul key={index} className="flex justify-center">
+                        <li>{member}</li>
+                      </ul>
+                    ))}
                   </div>
                 </div>
               ))}
