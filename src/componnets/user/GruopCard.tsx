@@ -2,8 +2,9 @@ import { DoorClosedIcon, DoorOpenIcon, Users } from "lucide-react"
 import { Link } from "react-router-dom"
 import { groupRequest } from "../../api/groupRequest"
 import { useMember } from "../../context/memberContext"
+import { auth } from "../../../config/firebase"
 
-const GruopCard = ({name, description, members, groupID}: {name: string, description: string, members: [], groupID:string}) => {
+const GruopCard = ({name, description, members, groupID, moderator}: {name: string, description: string, members: [], groupID:string, moderator:string}) => {
 
   const { isMember } = useMember();
 
@@ -19,7 +20,7 @@ const GruopCard = ({name, description, members, groupID}: {name: string, descrip
             <p className="text-md text-center text-gray-500">{description}</p>
         </div>
         <div className="flex justify-center mb-3">
-          {isMember === name ?
+          {moderator === auth.currentUser?.displayName || isMember === name ? //check is member or moderator
           (
             <Link to={`/group/${groupID}`}><button className="btn-sm btn btn-neutral border-none text-white bg-primary hover:text-primary">Enter Group <DoorOpenIcon /></button></Link>
           )
