@@ -1,6 +1,6 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { auth, db } from "../../config/firebase";
 import { Check, CirclePlus, UserRoundPlus, Users } from "lucide-react";
 import Loader from "../ui/Loader";
@@ -65,7 +65,7 @@ const GroupFeed = () => {
                         {f.members.length < 2 ? 
                         <button disabled className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none">+ NEW BLOG POST</button> 
                         :
-                        <button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none">+ NEW BLOG POST</button> 
+                        <Link to={"/newblog"}><button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none">+ NEW BLOG POST</button> </Link>
                         }
                         <button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none" onClick={() => openModal('my_modal_1')}><CirclePlus /></button>               
                         <dialog id="my_modal_1" className="modal">
