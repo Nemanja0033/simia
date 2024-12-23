@@ -2,11 +2,12 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { auth, db } from "../../config/firebase";
-import { Check, Info, ShieldCheck, Users } from "lucide-react";
+import { Check, CirclePlus, ShieldCheck, UserRoundPlus, Users } from "lucide-react";
 import Loader from "../ui/Loader";
 import { useMember } from "../context/memberContext";
 import { acceptMember } from "../api/acceptMember";
 import { createFeedPost } from "../api/createFeedPost";
+import GroupFeedComponent from "../componnets/user/GroupFeedComponent";
 
 const GroupFeed = () => {
     const { groupID } = useParams<{ groupID: string }>();
@@ -38,7 +39,6 @@ const GroupFeed = () => {
         fetchGroupFeed();
     }, [groupID]);
 
-
     const openModal = (id: string) => {
         const modal = document.getElementById(id) as HTMLDialogElement | null;
         if (modal) {
@@ -59,7 +59,7 @@ const GroupFeed = () => {
            (
             <div className="w-full flex-row mt-20">
                 <div className="flex w-full justify-center">
-                    <nav className="md:w-1/2 w-full flex justify-around h-[50px] rounded-md shadow-md gap-4 items-center">
+                    <nav className="fixed top-[70px] backdrop-blur-sm bg-transparent md:w-1/2 w-full flex justify-around h-[50px] rounded-md shadow-md gap-4 items-center">
                         <b className="text-primary text-xl flex gap-2 items-center">{f.name} <span className="flex items-center text-sm"><Users size={16} />({f.members.length})</span></b> 
                         <div className="flex gap-3 items-center">
                         {f.members.length < 2 ? 
@@ -67,7 +67,7 @@ const GroupFeed = () => {
                         :
                         <button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none">+ NEW BLOG POST</button> 
                         }
-                        <button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none" onClick={() => openModal('my_modal_1')}>Post to feed</button>               
+                        <button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none" onClick={() => openModal('my_modal_1')}><CirclePlus /></button>               
                         <dialog id="my_modal_1" className="modal">
                           <div className="modal-box">
                           <h1 className="font-bold text-primary text-xl text-center mb-3">Share on Feed</h1>
@@ -78,7 +78,7 @@ const GroupFeed = () => {
                               <textarea className="focus:ring-2 focus:ring-primary w-full min-h-32 focus:outline-none rounded-md border border-primary" placeholder="Your content. . ." value={content} onChange={(e) => {setContent(e.target.value)}} />
                             </div>
                             <div className="flex justify-center mt-3">
-                              <button onClick={() => createFeedPost(heading, content)} className="btn-neutral btn bg-primary text-white w-full hover:text-primary border-none">Post</button>
+                              <button onClick={() => createFeedPost(heading, content, f.name, groupID)} className="btn-neutral btn bg-primary text-white w-full hover:text-primary border-none">Post</button>
                             </div>
                           </div>
                           <form method="dialog" className="modal-backdrop">
@@ -87,7 +87,7 @@ const GroupFeed = () => {
                         </dialog>
                         {IS_MODERATOR(f.groupID) ? // check is current user a moderator of group
                         <div className="flex items-center">
-                        <button className="btn btn-xs btn-neutral border-none bg-primary text-white hover:text:primary" onClick={() => fetchMemberRequests(f.name)} onDoubleClick={() => openModal('my_modal_2')}><ShieldCheck /></button>
+                        <button className="btn btn-xs btn-neutral border-none bg-primary text-white hover:text:primary" onClick={() => fetchMemberRequests(f.name)} onDoubleClick={() => openModal('my_modal_2')}><UserRoundPlus /></button>
                         <dialog id="my_modal_2" className="modal">
                           <div className="modal-box">
                             <div className="ml-12">
@@ -111,9 +111,9 @@ const GroupFeed = () => {
                         </div>               
                     </nav>
                 </div>
-                <i className="text-center md:text-sm text-xs text-primary flex justify-center items-center gap-2 mt-3">
-                    <Info size={16}/>Use the feed to share opinions and contribute to the creation of quality content
-                </i>
+                <div className="flex justify-center">
+                  <GroupFeedComponent groupID={groupID} />
+                </div>
             </div>
            ) 
            :
