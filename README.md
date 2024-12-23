@@ -33,9 +33,14 @@ The project was developed under a commission and is publicly displayed with the 
 ### Cloning the Repository
 1. Clone the repository to your local machine using the following command:
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/Nemanja0033/simia.git
 ### Instaling Dependencies
 2. Open terminal and run
   ```bash
   npm install
+```
+### Starting Application
+3. Run this on terminal
+  ```bash
+  npm run dev
 
