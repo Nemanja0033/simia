@@ -21,7 +21,7 @@ const Navbar = () => {
     <nav className="w-full h-[70px] backdrop-blur-md bg-transparent fixed top-0 bg-base-100 shadow-md flex justify-around items-center">
       {/* Logo */}
       <div className="flex justify-center text-xl font-bold text-primary">
-        <span>Blog-App</span>
+        <img src="/logo.png" className="w-24"></img>
       </div>
   
       {/* Links for larger screens */}
