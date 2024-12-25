@@ -1,50 +1,46 @@
-# React + TypeScript + Vite
+# SIMIA (Sistema Integrato Modellamento Idee & Azioni) Documentation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+SIMIA is a collaborative blog web platform developed as part of a custom project. It allows users to create and manage groups, interact with blog posts, and communicate in private spaces within each group. The application is designed for seamless user interaction, enabling blog creation, reading, and commenting.
 
-Currently, two official plugins are available:
+The project was developed under a commission and is publicly displayed with the permission of the client. All rights are reserved.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- **User Registration and Authentication**: Users can sign up, log in, and manage their account credentials.
+- **Admin Dashboard**: Admins have access to a dashboard to manage users, groups, and content.
+- **Advanced Group System**: Users can create groups and manage them with various settings.
+- **Membership Requests**: Users can send requests to group moderators to join a group.
+- **Private Content within Groups**: Each group has a private feed where content is visible only to members.
+- **Blog Creation**: Users can create and publish their own blog posts.
+- **Reading and Commenting on Blog Posts**: Users can browse blog posts, read content, and engage through comments.
+  
+## Technologies Used
+- **Frontend**: 
+  - React
+  - Tailwind CSS
+  - TypeScript
+- **Backend & Database**: 
+  - Firebase
+  - Node.js
+- **Routing**: 
+  - React Router DOM
+- **UI & Tools**:
+  -DaisyUI
+  -tinymce
 
-## Expanding the ESLint configuration
+## Setup Instructions
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Cloning the Repository
+1. Clone the repository to your local machine using the following command:
+   ```bash
+   git clone https://github.com/Nemanja0033/simia.git
+### Instaling Dependencies
+2. Open terminal and run
+  ```bash
+  npm install
 ```
+### Starting Application
+3. Run this on terminal
+  ```bash
+  npm run dev
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
