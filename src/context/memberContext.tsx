@@ -14,31 +14,29 @@ export const MemberProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
             if (user) {
-                // Korisnik je prijavljen
                 const q = query(collection(db, "users"), where("userID", "==", user.uid));
                 try {
                     const querySnapshot = await getDocs(q);
 
                     if (querySnapshot.empty) {
                         console.log("User document does not exist");
-                        setIsMember(null); // Nije član
+                        setIsMember(null); 
                         return;
                     }
 
                     querySnapshot.forEach((doc) => {
                         const data = doc.data().group;
                         if (data) {
-                            setIsMember(data); // Postavi grupu korisnika
+                            setIsMember(data); 
                         } else {
-                            setIsMember(null); // Nema grupe
+                            setIsMember(null);
                         }
                     });
                 } catch (error) {
                     console.error("Error fetching user data:", error);
-                    setIsMember(null); // Greška u dohvatanju podataka
+                    setIsMember(null);
                 }
             } else {
-                // Nema prijavljenog korisnika
                 console.log("No user is signed in");
                 setIsMember(null);
             }

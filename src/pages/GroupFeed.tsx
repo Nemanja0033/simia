@@ -2,12 +2,13 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { auth, db } from "../../config/firebase";
-import { Check, CirclePlus, UserRoundPlus, Users } from "lucide-react";
+import { Check, CirclePlus, DoorClosed, LogOut, UserRoundPlus, Users } from "lucide-react";
 import Loader from "../ui/Loader";
 import { useMember } from "../context/memberContext";
 import { acceptMember } from "../api/acceptMember";
 import { createFeedPost } from "../api/createFeedPost";
 import GroupFeedComponent from "../componnets/user/GroupFeedComponent";
+import { leaveGroup } from "../api/leaveGroup";
 
 const GroupFeed = () => {
     const { groupID } = useParams<{ groupID: string }>();
@@ -67,7 +68,8 @@ const GroupFeed = () => {
                         :
                         <Link to={"/newblog"}><button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none">+ NEW BLOG POST</button> </Link>
                         }
-                        <button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none" onClick={() => openModal('my_modal_1')}><CirclePlus /></button>               
+                        <button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none" onClick={() => openModal('my_modal_1')}><CirclePlus /></button>
+                        <button onClick={() => leaveGroup(auth.currentUser?.uid, auth.currentUser?.displayName, f.groupID)} className="btn btn-neutral bg-primary btn-xs text-white"><LogOut /></button>
                         <dialog id="my_modal_1" className="modal">
                           <div className="modal-box">
                           <h1 className="font-bold text-primary text-xl text-center mb-3">Share on Feed</h1>
@@ -86,25 +88,25 @@ const GroupFeed = () => {
                           </form>
                         </dialog>
                         {IS_MODERATOR(f.groupID) ? // check is current user a moderator of group
-                        <div className="flex items-center">
+                        <div className="flex items-center gap-3">
                         <button className="btn btn-xs btn-neutral border-none bg-primary text-white hover:text:primary" onClick={() => fetchMemberRequests(f.name)} onDoubleClick={() => openModal('my_modal_2')}><UserRoundPlus /></button>
-                        <dialog id="my_modal_2" className="modal">
-                          <div className="modal-box">
-                            <div className="ml-12">
-                            <h1 className="font-bold text-primary text-xl text-center">Member Requests</h1>
-                            {memberRequest.map((m) => (
-                              <div className="flex justify-center gap-3 items-center text-md mt-3">
-                                <span className="font-bold">{m.username}</span>
-                                <i className="text-sm">{m.email}</i>
-                                <button className="text-primary hover:text-green-500" onClick={() => acceptMember(m.userID, f.name, m.username, f.groupID)}><Check /></button>
+                          <dialog id="my_modal_2" className="modal">
+                            <div className="modal-box">
+                              <div className="ml-12">
+                              <h1 className="font-bold text-primary text-xl text-center">Member Requests</h1>
+                              {memberRequest.map((m) => (
+                                <div className="flex justify-center gap-3 items-center text-md mt-3">
+                                  <span className="font-bold">{m.username}</span>
+                                  <i className="text-sm">{m.email}</i>
+                                  <button className="text-primary hover:text-green-500" onClick={() => acceptMember(m.userID, f.name, m.username, f.groupID)}><Check /></button>
+                                </div>
+                              ))}
                               </div>
-                            ))}
                             </div>
-                          </div>
-                          <form method="dialog" className="modal-backdrop">
-                            <button>Close</button>
-                          </form>
-                        </dialog>
+                            <form method="dialog" className="modal-backdrop">
+                              <button>Close</button>
+                            </form>
+                          </dialog>
                       </div>    
                         : ''
                         }

@@ -5,15 +5,18 @@ import App from './App.tsx'
 import { AuthProvider } from './context/authContext.tsx'
 import { AdminProvider } from './context/adminContext.tsx'
 import { MemberProvider } from './context/memberContext.tsx'
+import { UserProvider } from './context/userCotnext.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <AuthProvider>
-      <AdminProvider>
-          <MemberProvider>
-            <App />
-          </MemberProvider>
-      </AdminProvider>
+      <UserProvider>
+        <AdminProvider>
+            <MemberProvider>
+              <App />
+            </MemberProvider>
+        </AdminProvider>
+      </UserProvider>
     </AuthProvider>
   </StrictMode>,
 )
