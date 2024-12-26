@@ -20,6 +20,9 @@ export const createFeedPost = async (heading: string, content: string, groupName
           }),
         likes: {
             users: [],
+        },
+        dislikes: {
+            users: [],
         }
     })
         location.reload();

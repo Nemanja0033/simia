@@ -2,6 +2,7 @@ import { query, collection, where, getDocs, orderBy } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { auth, db } from "../../../config/firebase";
 import { toggleLikePost } from "../../api/likePost";
+import { toggleDislikePost } from "../../api/unlikePost";
 
 const GroupFeedComponent = ({groupID}: {groupID: string | undefined}) => {
 
@@ -43,9 +44,9 @@ return (
               <span className="text-primary font-bold text-md">For</span>
               {m.likes.users.length}
             </button>
-            <button onClick={() => toggleLikePost(m.postID, auth.currentUser?.displayName)} className="text-red-400 flex gap-2">
+            <button onClick={() => toggleDislikePost(m.postID, auth.currentUser?.displayName)} className="text-red-400 flex gap-2">
               <span className="text-red-400 font-bold text-md">Against</span>
-              {m.likes.users.length}
+              {m.dislikes.users.length}
             </button>
           </div>
         </div>
