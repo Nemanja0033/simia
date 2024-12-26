@@ -10,6 +10,7 @@ export const createFeedPost = async (heading: string, content: string, groupName
         author: auth.currentUser?.displayName,
         group: groupName,
         groupID: groupID,
+        postID: Math.random(),
         createdAt: new Date().toLocaleString('en-US', {
             month: 'short',
             day: '2-digit',
@@ -18,10 +19,10 @@ export const createFeedPost = async (heading: string, content: string, groupName
             minute: '2-digit',
           }),
         likes: {
-            count: 0,
             users: [],
         }
     })
+        location.reload();
     }
     catch(err){
         console.log('Error while creating post', err);
