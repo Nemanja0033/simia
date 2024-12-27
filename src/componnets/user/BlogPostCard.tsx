@@ -8,10 +8,10 @@ type BlogProps = {
 
 const BlogPostCard = ({image, heading}: BlogProps) => {
   return (
-    <div className='w-96 h-auto rounded-md shadow-md flex justify-center border border-base-200 mb-3 cursor-pointer'>
+    <div className='w-96 h-[340px] rounded-md shadow-md flex justify-center border border-base-200 mb-3 cursor-pointer'>
         <div className='flex-row w-[90%]'>
             <div className='flex justify-center mt-3 mb-3'>
-                <img src={image} alt={heading} className='w-full rounded-lg aspect-auto hover:scale-105 transition-all' />
+                <img src={image} alt={heading} className='w-full rounded-lg aspect-auto' />
             </div>
             <div className='flex justify-center items-center'>
                 <h1 className='text-xl font-bold text-center'>{heading}</h1>

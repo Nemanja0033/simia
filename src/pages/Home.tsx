@@ -19,17 +19,20 @@ const Home = () => {
   }, [blog]);
 
   return (
-    <div className='md:mt-20 mt-32 w-full flex justify-center'>
-      <div className='flex-row'>
-        <h1 className='text-center text-2xl flex gap-2 items-center justify-center text-primary font-bold mt-6 mb-6'>Most Recent Blog Posts <ArrowDown /></h1>
-        {blog.map((b) => (
-          <div>
+    <div className='md:mt-20 mt-32 w-full flex flex-col items-center'>
+      <h1 className='text-center text-2xl flex gap-2 items-center justify-center text-primary font-bold mt-6 mb-6'>
+        Most Recent Blog Posts <ArrowDown />
+      </h1>
+      <div className='flex flex-wrap gap-4 justify-center'>
+        {blog.map((b, index) => (
+          <div key={index}>
             <BlogPostCard image={b.thumbnail} heading={b.heading} />
           </div>
         ))}
       </div>
     </div>
   );
+  
 };
 
 export default Home;
