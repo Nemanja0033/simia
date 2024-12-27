@@ -22,9 +22,12 @@ const ArticlePage = () => {
     <div className="w-full flex justify-center mt-28">
         {article.map((a, index) => (
             <div key={index} className="md:w-1/2 w-full flex-row">
-                <div className="flex justify-between items-end">
+                <div className="flex justify-start items-end">
                     <h1 className="text-2xl font-bold text-center">{a.heading}</h1>
-                    <span className="text-sm text-gray-600">{a.createdAt}</span>
+                </div>
+                <div className="flex justify-start items-end gap-2 mt-1 mb-1">
+                    <i className="text-gray-600">Writen by <i className="font-bold">{a.group}</i></i>
+                    <i className="text-sm text-gray-600">{a.createdAt}</i>
                 </div>
                 <div className="flex justify-center">
                     <img src={a.image} alt={a.heading} />
