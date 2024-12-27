@@ -11,6 +11,7 @@ import UnauthorizedRoute from "./routes/UnauthorizedRoute"
 import CreateGroup from "./pages/CreateGroup"
 import GroupFeed from "./pages/GroupFeed"
 import BlogEditor from "./pages/BlogEditor"
+import ArticlePage from "./pages/ArticlePage"
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/unauthorized" element={<UnauthorizedRoute />} />
         <Route path="/group/:groupID" element={<GroupFeed />} />
         <Route path="/newblog" element={<BlogEditor />} />
+        <Route path="/article/:heading" element={<ArticlePage />} />
       </Routes>
       <BottomNav />
     </BrowserRouter>
