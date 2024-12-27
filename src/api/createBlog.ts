@@ -10,6 +10,7 @@ export const createBlogPost = async (heading: string, content: string, groupName
         author: auth.currentUser?.displayName,
         group: groupName,
         thumbnail: url,
+        image: url,
         createdAt: new Date().toLocaleString('en-US', {
             month: 'short',
             day: '2-digit',
