@@ -94,13 +94,21 @@ const GroupFeed = () => {
                             <div className="modal-box">
                               <div className="ml-12">
                               <h1 className="font-bold text-primary text-xl text-center">Member Requests</h1>
-                              {memberRequest.map((m) => (
+                              {memberRequest.length < 1 ?
+                              (
+                                <div className="w-full h-full flex justify-center items-center mt-5">
+                                  <span>There is No Member Requests</span>
+                                </div>
+                              )
+                              :
+                              memberRequest.map((m) => (
                                 <div className="flex justify-center gap-3 items-center text-md mt-3">
                                   <span className="font-bold">{m.username}</span>
                                   <i className="text-sm">{m.email}</i>
                                   <button className="text-primary hover:text-green-500" onClick={() => acceptMember(m.userID, f.name, m.username, f.groupID)}><Check /></button>
                                 </div>
-                              ))}
+                              ))
+                            }
                               </div>
                             </div>
                             <form method="dialog" className="modal-backdrop">
