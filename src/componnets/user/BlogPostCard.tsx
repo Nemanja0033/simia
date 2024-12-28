@@ -2,7 +2,7 @@ import {  ArrowRight, MessageSquare } from "lucide-react"
 import { Link } from "react-router-dom"
 import { openModal } from "../../helpers/openModal"
 import { useComments } from "../../context/commentContext"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { auth } from "../../../config/firebase"
 
 type BlogProps = {
