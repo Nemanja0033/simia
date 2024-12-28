@@ -26,10 +26,10 @@ export const MemberProvider = ({ children }: { children: ReactNode }) => {
 
                     querySnapshot.forEach((doc) => {
                         const data = doc.data().group;
-                        if (data) {
+                        if (data !== '') {
                             setIsMember(data); 
                         } else {
-                            setIsMember(null);
+                            setIsMember('');
                         }
                     });
                 } catch (error) {
