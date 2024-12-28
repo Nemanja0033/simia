@@ -61,7 +61,9 @@ const GroupFeed = () => {
                         <Link to={`/group/${groupID}/newblog`}><button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none">+ NEW BLOG POST</button> </Link>
                         }
                         <button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none" onClick={() => openModal('my_modal_1')}><CirclePlus /></button>
-                        <button onClick={() => leaveGroup(auth.currentUser?.uid, auth.currentUser?.displayName, f.groupID)} className="btn btn-neutral bg-primary btn-xs text-white border-none"><LogOut /></button>
+                        {auth.currentUser?.displayName === f.moderator ? ""
+                        :
+                        <button onClick={() => leaveGroup(auth.currentUser?.uid, auth.currentUser?.displayName, f.groupID)} className="btn btn-neutral bg-primary btn-xs text-white border-none"><LogOut /></button>}
                         <dialog id="my_modal_1" className="modal">
                           <div className="modal-box">
                           <h1 className="font-bold text-primary text-xl text-center mb-3">Share on Feed</h1>
