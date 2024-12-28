@@ -2,6 +2,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import { useState } from 'react'
 import { createBlogPost } from '../api/createBlog';
 import { uploadToCloud } from '../api/uploadImage';
+import { useMember } from '../context/memberContext';
 
 const BlogEditor = () => {
 
@@ -9,6 +10,7 @@ const BlogEditor = () => {
     const [blogContent, setBlogContent] = useState<string>("");
     const [groupName, setGroupName] = useState<string>("");
     const [imageUrl, setImageUrl] = useState<string>("");
+    const { isMember } = useMember();
 
     const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -22,6 +24,14 @@ const BlogEditor = () => {
             console.error('Error uploading image:', error);
         }
     };
+
+    if(isMember == ''){
+        return(
+            <div className='w-full h-screen flex justify-center items-center'>
+                <h1 className='text-3xl'>You Need To Be A Member Of Group To Be Able To Write Blog Post.</h1>
+            </div>
+        )
+    }
 
   return (
     <div className='w-full h-screen flex justify-center'>
