@@ -25,7 +25,7 @@ const App = () => {
         <Route path="/creategroup" element={<CreateGroup />} />
         <Route path="/unauthorized" element={<UnauthorizedRoute />} />
         <Route path="/group/:groupID" element={<GroupFeed />} />
-        <Route path="/newblog" element={<BlogEditor />} />
+        <Route path="/group/:groupID/newblog" element={<BlogEditor />} />
         <Route path="/article/:heading" element={<ArticlePage />} />
       </Routes>
       <BottomNav />

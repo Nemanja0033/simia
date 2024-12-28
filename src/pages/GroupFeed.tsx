@@ -66,7 +66,7 @@ const GroupFeed = () => {
                         {f.members.length < 2 ? 
                         <button disabled className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none">+ NEW BLOG POST</button> 
                         :
-                        <Link to={"/newblog"}><button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none">+ NEW BLOG POST</button> </Link>
+                        <Link to={`/group/${groupID}/newblog`}><button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none">+ NEW BLOG POST</button> </Link>
                         }
                         <button className="btn btn-neutral btn-xs bg-primary text-white hover:text-primary border-none" onClick={() => openModal('my_modal_1')}><CirclePlus /></button>
                         <button onClick={() => leaveGroup(auth.currentUser?.uid, auth.currentUser?.displayName, f.groupID)} className="btn btn-neutral bg-primary btn-xs text-white border-none"><LogOut /></button>
