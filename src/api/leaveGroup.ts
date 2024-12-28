@@ -7,6 +7,10 @@ export const leaveGroup = async (
   username: string | null | undefined,
   groupID: string
 ) => {
+
+  const msg = confirm("Are You Sure Want To Leave Group?")
+
+ if(msg){
   if (!userID || !username) {
     console.error("Invalid userID or username.");
     return;
@@ -34,4 +38,5 @@ export const leaveGroup = async (
   } catch (error) {
     console.error("Error leaving group:", error);
   }
+ }
 };
