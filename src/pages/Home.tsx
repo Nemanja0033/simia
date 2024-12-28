@@ -16,7 +16,7 @@ const Home = () => {
     }
 
     fetchBlogs();
-  }, [blog]);
+  }, []);
 
   return (
     <div className='md:mt-20 mt-32 w-full flex flex-col items-center'>
