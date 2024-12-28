@@ -86,7 +86,7 @@ const Dashboard = () => {
       };
 
       callFunctions();
-  }, [activeUsers, pendingUsers, history, groups]); 
+  }, []); //empty array to prevent endless loop of http requests 
 
   if(loading){
     return <Loader />
