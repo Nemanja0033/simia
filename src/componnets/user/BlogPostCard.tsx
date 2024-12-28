@@ -2,7 +2,7 @@ import {  ArrowRight, MessageSquare } from "lucide-react"
 import { Link } from "react-router-dom"
 import { openModal } from "../../helpers/openModal"
 import { useComments } from "../../context/commentContext"
-import { useState } from "react"
+import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useState } from "react"
 import { auth } from "../../../config/firebase"
 
 type BlogProps = {
@@ -53,7 +53,7 @@ const BlogPostCard = ({image, heading}: BlogProps) => {
                         <div className="flex flex-col gap-6 overflow-auto max-h-64 min-h-32">
                             {comments.length < 1 ? <h1 className="text-center font-bold mt-12">No Comments Yet!</h1>
                             :
-                            comments.map((c,index) => (
+                            comments.map((c: { author: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; date: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; content: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined },index: Key | null | undefined) => (
                                 <div key={index} className="flex items-start gap-4 p-4 mb-3 rounded-md shadow-md">
                                 <div className="flex flex-col">
                                     <div className="flex items-center gap-2">
