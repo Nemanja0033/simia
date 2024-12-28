@@ -9,6 +9,7 @@ import { acceptMember } from "../api/acceptMember";
 import { createFeedPost } from "../api/createFeedPost";
 import GroupFeedComponent from "../componnets/user/GroupFeedComponent";
 import { leaveGroup } from "../api/leaveGroup";
+import { openModal } from "../helpers/openModal";
 
 const GroupFeed = () => {
     const { groupID } = useParams<{ groupID: string }>();
@@ -39,15 +40,6 @@ const GroupFeed = () => {
 
         fetchGroupFeed();
     }, [groupID]);
-
-    const openModal = (id: string) => {
-        const modal = document.getElementById(id) as HTMLDialogElement | null;
-        if (modal) {
-          modal.showModal();
-        } else {
-          console.error("Modal element not found");
-        }
-      };
 
     if(loading){
         return <Loader />

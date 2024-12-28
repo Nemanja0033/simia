@@ -11,6 +11,7 @@ export const createBlogPost = async (heading: string, content: string, groupName
         group: groupName,
         thumbnail: url,
         image: url,
+        comments: [],
         createdAt: new Date().toLocaleString('en-US', {
             month: 'short',
             day: '2-digit',

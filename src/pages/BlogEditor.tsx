@@ -63,7 +63,7 @@ const BlogEditor = () => {
                     <Editor
                         value={blogContent}
                         initialValue="Write Your Blog Content Here..."
-                        apiKey="your-api-key"
+                        apiKey='eyi1wukwullyehuy1q33z6ypg5liqk2sq6tf32gy9u40drly'
                         onEditorChange={(newText) => setBlogContent(newText)}
                         init={{
                             height: 300,
