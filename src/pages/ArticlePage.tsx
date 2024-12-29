@@ -5,7 +5,6 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { addComment } from "../api/addComment";
 import { useAuth } from "../context/authContext";
 import Loader from "../ui/Loader";
-import Footer from "../componnets/navigation/Footer";
 
 const ArticlePage = () => {
 
@@ -99,7 +98,6 @@ const ArticlePage = () => {
             </div>
         ))}
     </div>
-    <Footer />
     </>
   )
 }
