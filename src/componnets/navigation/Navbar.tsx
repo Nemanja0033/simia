@@ -1,14 +1,16 @@
-import { LogOutIcon } from "lucide-react";
+import { LogOutIcon, Menu } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import { logout } from "../../api/logout";
 import { useAdmin } from "../../context/adminContext";
 import Loader from "../../ui/Loader";
 import ThemeToggler from "../../ui/Theme";
+import { useMenu } from "../../context/menuContext";
 
 const Navbar = () => {
   const { isAuth } = useAuth();
   const { isAdmin, loading } = useAdmin();
+  const { toggleMenu } = useMenu();
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
@@ -18,7 +20,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="w-full h-[70px] backdrop-blur-md bg-transparent fixed top-0 bg-base-100 shadow-md flex justify-around items-center">
+    <nav className="w-full h-[70px]  bg-base-100 fixed top-0 shadow-md flex justify-around items-center">
       {/* Logo */}
       <div className="flex justify-center text-xl font-bold text-primary">
         <img src="/logo.png" className="w-24"></img>
@@ -49,9 +51,12 @@ const Navbar = () => {
       {/* Links for smaller screens */}
       <div className="md:hidden flex items-center">
         {!isAuth ? (
-          <Link className={`hover:text-primary ${isActive("/login") ? "border-b-2 border-primary" : ""}`} to="/login">
+          <div className="flex items-center gap-2">
+            <Link className={`hover:text-primary ${isActive("/login") ? "border-b-2 border-primary" : ""}`} to="/login">
             <button className="text-primary">Sign Up</button>
           </Link>
+          <button onClick={toggleMenu}><Menu /></button>
+          </div>
         ) : (
           <div className="flex items-center gap-2 hover:text-primary tracking-wider">
             <button onClick={logout}>Logout</button>
