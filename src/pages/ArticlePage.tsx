@@ -39,8 +39,6 @@ const ArticlePage = () => {
             content: comment,
         }
 
-        console.log(hideShowAnonymousComments)
-
     if(loading){
         return <Loader />
     }
@@ -82,12 +80,15 @@ const ArticlePage = () => {
                     </button>
                 </div>
 
+                {a.comments.length < 1 ? '' :
+                (
                 <div className="w-full flex justify-start gap-3 items-center mt-3">
                     <input className="border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" 
                            type="text"
                            placeholder="Search Comment. . ." onChange={(e) => setCommentSearch(e.target.value)} />
-                    <button onClick={() => setHideShowAnonymousComments(!hideShowAnonymousComments)} className="btn btn-neutral btn-xs text-primary border-none hover:text-white hover:bg-primary">{hideShowAnonymousComments == true ? "Show All Comments" : "Hide Anonymous Comments"}</button>
+                    <button onClick={() => setHideShowAnonymousComments(!hideShowAnonymousComments)} className="btn btn-neutral w-32 md:w-auto h-auto btn-xs text-primary border-none hover:text-white hover:bg-primary">{hideShowAnonymousComments == true ? "Show All Comments" : "Hide Anonymous Comments"}</button>
                 </div>
+                )}
 
                 <div className="mt-3 overflow-auto">
                     {a.comments.filter((item: any) => 
