@@ -14,7 +14,7 @@ const BlogPostCard = ({image, heading}: BlogProps) => {
             <div className='flex justify-center mt-3 mb-3'>
                 <img src={image} alt={heading} className='w-full h-52 rounded-lg aspect-auto' />
             </div>
-            <div className='flex justify-center h-12 overflow-auto'>
+            <div className='flex justify-center h-20 overflow-auto'>
                 <h1 className='text-xl  font-bold text-center'>{heading}</h1>
             </div>
             <div className="flex justify-center mt-3 mb-3">
