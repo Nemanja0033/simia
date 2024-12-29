@@ -12,6 +12,8 @@ const ArticlePage = () => {
     const [article, setArticle] = useState<any[]>([]);
     const [comment, setComment] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(true);
+    const [commentSearch, setCommentSearch] = useState<string>("");
+    const [hideShowAnonymousComments, setHideShowAnonymousComments] = useState<boolean>(false);
     const { isAuth } = useAuth();
 
     useEffect(() => {
@@ -36,7 +38,9 @@ const ArticlePage = () => {
               }),
             content: comment,
         }
-    
+
+        console.log(hideShowAnonymousComments)
+
     if(loading){
         return <Loader />
     }
@@ -78,8 +82,19 @@ const ArticlePage = () => {
                     </button>
                 </div>
 
+                <div className="w-full flex justify-start gap-3 items-center mt-3">
+                    <input className="border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" 
+                           type="text"
+                           placeholder="Search Comment. . ." onChange={(e) => setCommentSearch(e.target.value)} />
+                    <button onClick={() => setHideShowAnonymousComments(!hideShowAnonymousComments)} className="btn btn-neutral btn-xs text-primary border-none hover:text-white hover:bg-primary">{hideShowAnonymousComments == true ? "Show All Comments" : "Hide Anonymous Comments"}</button>
+                </div>
+
                 <div className="mt-3 overflow-auto">
-                    {a.comments.map((c: any, index: number) => (
+                    {a.comments.filter((item: any) => 
+                    hideShowAnonymousComments === true ? item.author !== 'Anonymous'
+                    : item.author
+                    ).filter((item: any) => commentSearch.toLowerCase() === '' ? 
+                    true : item.author.toLowerCase().includes(commentSearch.toLowerCase())).map((c: any, index: number) => (
                     <div key={index} className="flex flex-col gap-3 mb-4">
                         <div className="flex gap-4">
                         <div className="flex flex-col">
