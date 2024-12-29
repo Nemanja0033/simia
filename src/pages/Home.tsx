@@ -4,6 +4,7 @@ import { db } from '../../config/firebase';
 import BlogPostCard from '../componnets/user/BlogPostCard';
 import { ArrowDown } from 'lucide-react';
 import Loader from '../ui/Loader';
+import Footer from '../componnets/navigation/Footer';
 
 const Home = () => {
   
@@ -37,6 +38,7 @@ const Home = () => {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
   

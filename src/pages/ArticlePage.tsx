@@ -5,6 +5,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { addComment } from "../api/addComment";
 import { useAuth } from "../context/authContext";
 import Loader from "../ui/Loader";
+import Footer from "../componnets/navigation/Footer";
 
 const ArticlePage = () => {
 
@@ -42,6 +43,7 @@ const ArticlePage = () => {
     }
 
   return (
+   <>
     <div className="w-full flex justify-center mt-28">
         {article.map((a, index) => (
             <div key={index} className="md:w-1/2 w-full flex-row">
@@ -58,7 +60,7 @@ const ArticlePage = () => {
                 <div dangerouslySetInnerHTML={{__html: a.content}} className="mt-6">
                     
                 </div>
-                <div className={`flex flex-col shadow-md w-full ${a.comments.length < 1 ? "h-32" : "h-1/2"} p-4 rounded-md mt-6 `}>
+                <div className={`flex flex-col shadow-md w-full min-h-[200px] max-h-[600px] p-4 rounded-md mt-6 `}>
                 <div className="flex justify-start">
                     <h1>Comments ({a.comments.length})</h1>
                 </div>
@@ -97,6 +99,8 @@ const ArticlePage = () => {
             </div>
         ))}
     </div>
+    <Footer />
+    </>
   )
 }
 
