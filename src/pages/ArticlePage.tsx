@@ -4,12 +4,14 @@ import { auth, db } from "../../config/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { addComment } from "../api/addComment";
 import { useAuth } from "../context/authContext";
+import Loader from "../ui/Loader";
 
 const ArticlePage = () => {
 
     const { heading } = useParams();
     const [article, setArticle] = useState<any[]>([]);
     const [comment, setComment] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(true);
     const { isAuth } = useAuth();
 
     useEffect(() => {
@@ -17,6 +19,7 @@ const ArticlePage = () => {
             const q = query(collection(db, 'blogPosts'), where("heading", "==", heading));
             const data = await getDocs(q);
             setArticle(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+            setLoading(false);
         }
 
         fetchArticle();
@@ -33,6 +36,10 @@ const ArticlePage = () => {
               }),
             content: comment,
         }
+    
+    if(loading){
+        return <Loader />
+    }
 
   return (
     <div className="w-full flex justify-center mt-28">
