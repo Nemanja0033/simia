@@ -61,6 +61,7 @@ const Navbar = () => {
           <div className="flex items-center gap-2 hover:text-primary tracking-wider">
             <button onClick={logout}>Logout</button>
             <LogOutIcon size={18} />
+<button onclick={toggleMenu}><Menu /></button>
           </div>
         )}
       </div>
