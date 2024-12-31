@@ -59,8 +59,6 @@ const Navbar = () => {
           <div className="flex items-center gap-5 hover:text-primary tracking-wider">
             <button onClick={logout}>Logout</button>
             <LogOutIcon size={18} />
-            <ThemeToggler />
-            <button onClick={toggleMenu}><Menu /></button>
           </div>
         )}
       </div>
