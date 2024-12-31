@@ -10,8 +10,8 @@ import { useMenu } from "../../context/menuContext";
 const Navbar = () => {
   const { isAuth } = useAuth();
   const { isAdmin, loading } = useAdmin();
-  const { toggleMenu } = useMenu();
   const location = useLocation();
+    const { toggleMenu } = useMenu();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -21,12 +21,10 @@ const Navbar = () => {
 
   return (
     <nav className="w-full h-[70px]  bg-base-100 fixed top-0 shadow-md flex justify-around items-center">
-      {/* Logo */}
       <div className="flex justify-center text-xl font-bold text-primary">
-        <img src="/logo.png" className="w-24"></img>
+        <Link to={'/'}><img src="/logo.png" className="w-24"></img></Link>
       </div>
   
-      {/* Links for larger screens */}
       <div className="md:flex hidden gap-6 text-md tracking-wider">
         <Link className={`hover:text-primary ${isActive("/") ? "border-b-2 border-primary" : ""}`} to="/">Home</Link>
         {isAuth && <Link className={`hover:text-primary ${isActive("/groups") ? "border-b-2 border-primary" : ""}`} to="/groups">Groups</Link>}
@@ -48,19 +46,21 @@ const Navbar = () => {
         <ThemeToggler />
       </div>
   
-      {/* Links for smaller screens */}
       <div className="md:hidden flex items-center">
         {!isAuth ? (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-5">
             <Link className={`hover:text-primary ${isActive("/login") ? "border-b-2 border-primary" : ""}`} to="/login">
             <button className="text-primary">Sign Up</button>
           </Link>
+          <ThemeToggler />
           <button onClick={toggleMenu}><Menu /></button>
           </div>
         ) : (
-          <div className="flex items-center gap-2 hover:text-primary tracking-wider">
+          <div className="flex items-center gap-5 hover:text-primary tracking-wider">
             <button onClick={logout}>Logout</button>
             <LogOutIcon size={18} />
+            <ThemeToggler />
+            <button onClick={toggleMenu}><Menu /></button>
           </div>
         )}
       </div>

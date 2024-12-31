@@ -12,7 +12,7 @@ export const MenuProvider = ({children}: {children: ReactNode}) => {
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
-    }
+    } // dynamic open & closing on mobile
 
     return(
         <MenuContext.Provider value={{isOpen, toggleMenu}}>
