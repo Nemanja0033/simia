@@ -10,7 +10,7 @@ const GruopCard = ({name, description, members, groupID, moderator}: {name: stri
 
 
   return (
-    <div className="lg:w-64 w-full h-auto shadow-lg flex-row mt-12">
+    <div className="w-64 h-auto shadow-lg flex-row mt-12">
         <div className="flex justify-center mb-2">
             <i className="font-bold text-xl text-primary">{name}</i>
         </div>

@@ -41,6 +41,11 @@ const GroupFeed = () => {
         fetchGroupFeed();
     }, [groupID]);
 
+    const handleClick = (groupName: string) => {
+      fetchMemberRequests(groupName)
+      openModal('my_modal_2');
+    }
+
     if(loading){
         return <Loader />
     }
@@ -83,7 +88,7 @@ const GroupFeed = () => {
                         </dialog>
                         {IS_MODERATOR(f.groupID) ? // check is current user a moderator of group
                         <div className="flex items-center gap-3">
-                        <button className="btn btn-xs btn-neutral border-none bg-primary text-white hover:text:primary" onClick={() => fetchMemberRequests(f.name)} onDoubleClick={() => openModal('my_modal_2')}><UserRoundPlus /></button>
+                        <button className="btn btn-xs btn-neutral border-none bg-primary text-white hover:text:primary" onClick={() => handleClick(f.groupName)} ><UserRoundPlus /></button>
                           <dialog id="my_modal_2" className="modal">
                             <div className="modal-box">
                               <div className="ml-12">
