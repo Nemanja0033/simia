@@ -20,7 +20,10 @@ const GroupFeed = () => {
     const [content, setContent] = useState<string>("");
     const { isMember } = useMember();
 
-    const IS_MEMBER = (name: string) => isMember === name;
+
+    console.log(isMember);
+
+    const IS_MEMBER =  (name: string) => isMember === name;
     const IS_MODERATOR = (id: string) => auth.currentUser?.uid === id;
 
     async function fetchMemberRequests (groupName: string){
@@ -41,11 +44,6 @@ const GroupFeed = () => {
         fetchGroupFeed();
     }, [groupID]);
 
-    const handleClick = (groupName: string) => {
-      fetchMemberRequests(groupName)
-      openModal('my_modal_2');
-    }
-
     if(loading){
         return <Loader />
     }
@@ -53,7 +51,7 @@ const GroupFeed = () => {
   return (
     <div>
         {feed.map((f) => (
-           IS_MEMBER(f.name) ? //check is user a member of this group
+            IS_MEMBER(f.name) ? //check is user a member of this group
            (
             <div className="w-full flex-row mt-20">
                 <div className="flex w-full justify-center">
@@ -88,7 +86,7 @@ const GroupFeed = () => {
                         </dialog>
                         {IS_MODERATOR(f.groupID) ? // check is current user a moderator of group
                         <div className="flex items-center gap-3">
-                        <button className="btn btn-xs btn-neutral border-none bg-primary text-white hover:text:primary" onClick={() => handleClick(f.groupName)} ><UserRoundPlus /></button>
+                        <button className="btn btn-xs btn-neutral border-none bg-primary text-white hover:text:primary" onClick={() => fetchMemberRequests(f.name)} onDoubleClick={() => openModal('my_modal_2')}><UserRoundPlus /></button>
                           <dialog id="my_modal_2" className="modal">
                             <div className="modal-box">
                               <div className="ml-12">

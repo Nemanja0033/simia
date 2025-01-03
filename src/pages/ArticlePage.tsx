@@ -95,7 +95,7 @@ const ArticlePage = () => {
                     hideShowAnonymousComments === true ? item.author !== 'Anonymous'
                     : item.author
                     ).filter((item: any) => commentSearch.toLowerCase() === '' ? 
-                    true : item.author.toLowerCase().includes(commentSearch.toLowerCase())).map((c: any, index: number) => (
+                    true : item.content.toLowerCase().includes(commentSearch.toLowerCase())).map((c: any, index: number) => (
                     <div key={index} className="flex flex-col gap-3 mb-4">
                         <div className="flex gap-4">
                         <div className="flex flex-col">

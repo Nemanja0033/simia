@@ -27,7 +27,7 @@ const GruopCard = ({name, description, members, groupID, moderator}: {name: stri
           )
           :
           (
-           isMember == name + 'pending' ? <button disabled className="btn btn-neutral btn-sm bg-primary text-white">Request Sent</button>
+           isMember == name + 'pending' || isMember !== '' ? <button disabled className="btn btn-neutral btn-sm bg-primary text-white">Enter Group</button>
            :
            <button onClick={() => groupRequest(name)} className="btn-sm btn btn-neutral border-none text-white bg-primary hover:text-primary">Request Enter <DoorClosedIcon /></button>
           )

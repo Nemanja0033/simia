@@ -20,7 +20,7 @@ export const createBlogPost = async (heading: string, content: string, groupName
             minute: '2-digit',
           }),
     });
-    alert('blog posted!');
+    location.href = '/'
     }
     catch(err){
         console.log('Error while creating post', err);

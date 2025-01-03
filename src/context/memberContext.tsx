@@ -26,11 +26,8 @@ export const MemberProvider = ({ children }: { children: ReactNode }) => {
 
                     querySnapshot.forEach((doc) => {
                         const data = doc.data().group;
-                        if (data !== '') {
-                            setIsMember(data); 
-                        } else {
-                            setIsMember('');
-                        }
+                        console.log(data) //potrebno cekanje!
+                       setIsMember(data)
                     });
                 } catch (error) {
                     console.error("Error fetching user data:", error);

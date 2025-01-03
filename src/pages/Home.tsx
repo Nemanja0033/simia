@@ -30,7 +30,7 @@ const Home = () => {
       <h1 className='text-center text-2xl flex gap-2 items-center justify-center text-primary font-bold mt-6 mb-6'>
         Most Recent Blog Posts <ArrowDown />
       </h1>
-      <div className='flex md:w-1/2 w-full shadow-md md:h-screen flex-wrap gap-4 justify-center'>
+      <div className='flex w-fulls md:h-screen flex-wrap gap-4 justify-center'>
         {blog.map((b, index) => (
           <div key={index}>
             <BlogPostCard image={b.thumbnail} heading={b.heading} />
