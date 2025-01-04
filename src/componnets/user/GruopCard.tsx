@@ -21,7 +21,7 @@ const GruopCard = ({name, description, members, groupID, moderator}: {name: stri
             <p className="text-md text-center text-gray-500">{description}</p>
         </div>
         <div className="flex justify-center mb-3">
-          {moderator === auth.currentUser?.displayName || isMember === name ? //check is member or moderator
+          {moderator === auth.currentUser?.displayName && isMember === name ? //check is member or moderator
           (
             <Link to={`/group/${groupID}`}><button className="btn-sm btn btn-neutral border-none text-white bg-primary hover:text-primary">Enter Group <DoorOpenIcon /></button></Link>
           )

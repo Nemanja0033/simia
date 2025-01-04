@@ -1,12 +1,15 @@
 import { useState } from "react"
 import { createGroup } from "../api/createGroup";
+import { useMember } from "../context/memberContext";
 
 
 const CreateGroup = () => {
 
     const [name, setName] = useState<string>("");
     const [description, setDescription] = useState<string>("");
+    const { isMember } = useMember();
 
+    if(isMember === ''){
         return (
             <div className="w-full h-96 flex justify-center justify-self-center md:mt-20 mt-32">
                 <div className="flex-row mt-20 md:w-1/3 w-full h-full md:shadow-md">
@@ -36,6 +39,11 @@ const CreateGroup = () => {
                 </div>
             </div>
           )
+    }
+
+    else{
+        return alert('You cannot create group, beacuse you are arleady member or waiting for approval');
+    }
         }
 
 export default CreateGroup
