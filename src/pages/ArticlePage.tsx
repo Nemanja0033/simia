@@ -90,7 +90,7 @@ const ArticlePage = () => {
                 </div>
                 )}
 
-                <div className="mt-3 overflow-auto">
+                <div className="mt-3 overflow-auto md:mb-0 mb-12">
                     {a.comments.filter((item: any) => 
                     hideShowAnonymousComments === true ? item.author !== 'Anonymous'
                     : item.author
