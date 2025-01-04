@@ -42,7 +42,9 @@ const CreateGroup = () => {
     }
 
     else{
-        return alert('You cannot create group, beacuse you are arleady member or waiting for approval');
+        return <div className="flex justify-center items-center h-screen w-full">
+                    <h1>You cannot create group, beacuse you are arleady member or waiting for approval</h1>
+               </div>;
     }
         }
 
