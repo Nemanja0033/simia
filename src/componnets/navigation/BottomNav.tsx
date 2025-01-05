@@ -12,12 +12,12 @@ const BottomNav = () => {
   return (
     <div>
       {isOpen === true ? (
-        <nav className="md:hidden fixed items-center backdrop-blur-sm z-50 bottom-0 flex justify-around gap-12 h-[60px] w-full">
-          <Link className="hover:text-primary" to={'/'}><HomeIcon /></Link>
-          <Link className="hover:text-primary" to={'/groups'}><Users /></Link>
+        <nav className="md:hidden fixed items-center backdrop-blur-lg z-50 bottom-0 flex justify-around gap-12 h-[60px] w-full">
+          <Link className="text-primary" to={'/'}><HomeIcon /></Link>
+          <Link className="text-primary" to={'/groups'}><Users /></Link>
           {isAdmin ? (
             <Link
-              className='hover:text-primary font-bold flex gap-2'
+              className='text-primary font-bold flex gap-2'
               to="/admin"
             >
               <ShieldEllipsis />

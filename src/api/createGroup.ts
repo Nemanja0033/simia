@@ -1,7 +1,11 @@
 import { addDoc, collection, query, where, getDocs, updateDoc } from "firebase/firestore";
 import { auth, db } from "../../config/firebase";
 
+let counter = 0;
+
 export const createGroup = async (name: string, description: string) => {
+  counter++;
+  if(counter === 1){
     try {
         const moderator = auth.currentUser?.displayName;
         const userID = auth.currentUser?.uid;
@@ -33,6 +37,8 @@ export const createGroup = async (name: string, description: string) => {
             });
 
             alert("Group successfully created and user updated!");
+            location.reload();
+            location.href = '/groups'
         } else {
             alert("User document not found!");
         }
@@ -40,4 +46,8 @@ export const createGroup = async (name: string, description: string) => {
         console.error("Error creating group or updating user:", error);
         alert("Failed to create group. Please try again.");
     }
+  }
+  else{
+    alert("Cannot make multiple groups at same time!");
+  }
 };

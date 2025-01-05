@@ -3,7 +3,7 @@ import { db, auth } from "../../config/firebase";
 
 let counter = 0;
 
-export const createBlogPost = async (heading: string, content: string, groupName: string, url:string) => {
+export const createBlogPost = async (heading: string, content: string, url:string) => {
    counter++;
    if(counter === 1){
     try{
@@ -12,7 +12,7 @@ export const createBlogPost = async (heading: string, content: string, groupName
         heading: heading,
         content: content,
         author: auth.currentUser?.displayName,
-        group: groupName,
+        group: auth.currentUser?.displayName,
         thumbnail: url,
         image: url,
         comments: [],

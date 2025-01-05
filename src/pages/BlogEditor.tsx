@@ -7,7 +7,6 @@ import { useMember } from '../context/memberContext';
 const BlogEditor = () => {
     const [blogHeading, setBlogHeading] = useState<string>("");
     const [blogContent, setBlogContent] = useState<string>("");
-    const [groupName, setGroupName] = useState<string>("");
     const [imageUrl, setImageUrl] = useState<string>("");
     const { isMember } = useMember();
 
@@ -43,13 +42,6 @@ const BlogEditor = () => {
                     <input
                         className="input input-bordered w-full"
                         type="text"
-                        placeholder="Group Name..."
-                        value={groupName}
-                        onChange={(e) => setGroupName(e.target.value)}
-                    />
-                    <input
-                        className="input input-bordered w-full"
-                        type="text"
                         placeholder="Blog Heading..."
                         value={blogHeading}
                         onChange={(e) => setBlogHeading(e.target.value)}
@@ -81,9 +73,9 @@ const BlogEditor = () => {
                 <div className="mt-6">
                     <button
                         onClick={() =>
-                            createBlogPost(blogHeading, blogContent, groupName, imageUrl)
+                            createBlogPost(blogHeading, blogContent, imageUrl)
                         }
-                        className="btn btn-neutral bg-primary text-white hover:text-primary w-full"
+                        className="btn btn-neutral border-none bg-primary text-white hover:text-primary w-full"
                     >
                         Post
                     </button>
