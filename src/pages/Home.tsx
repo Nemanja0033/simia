@@ -6,7 +6,6 @@ import { ArrowDown } from 'lucide-react';
 import Loader from '../ui/Loader';
 
 const Home = () => {
-  
   const [blog, setBlog] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
