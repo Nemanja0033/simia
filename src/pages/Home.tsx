@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../../dist/config/firebase';
+import { db } from '../../config/firebase';
 import BlogPostCard from '../componnets/BlogPostCard';
 import { ArrowDown } from 'lucide-react';
 import Loader from '../ui/Loader';

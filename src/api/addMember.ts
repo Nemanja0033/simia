@@ -1,5 +1,5 @@
 import { query, collection, where, getDocs, doc, updateDoc } from "firebase/firestore";
-import { db } from "../../dist/config/firebase";
+import { db } from "../../config/firebase";
 
 export const addMember = async (username: string, groupID: string) => {
   try {

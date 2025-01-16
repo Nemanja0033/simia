@@ -1,5 +1,5 @@
 import { collection, addDoc } from "firebase/firestore";
-import { auth, db } from "../../dist/config/firebase";
+import { auth, db } from "../../config/firebase";
 
 export const createUser = async (username: string) => {
     try {

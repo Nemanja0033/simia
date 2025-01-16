@@ -1,5 +1,5 @@
 import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
-import { db } from "../../dist/config/firebase";
+import { db } from "../../config/firebase";
 
 export const toggleDislikePost = async (postID: number, username: string | null | undefined) => {
   if (!username) {

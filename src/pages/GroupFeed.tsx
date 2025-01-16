@@ -1,7 +1,7 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { auth, db } from "../../dist/config/firebase";
+import { auth, db } from "../../config/firebase";
 import { Check, CirclePlus, LogOut, UserRoundPlus, Users } from "lucide-react";
 import Loader from "../ui/Loader";
 import { useMember } from "../context/memberContext";

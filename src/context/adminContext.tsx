@@ -1,6 +1,6 @@
 import { query, collection, where, getDocs } from "firebase/firestore";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { db, auth } from "../../dist/config/firebase";
+import { db, auth } from "../../config/firebase";
 
 type AdminContextProps = {
     isAdmin: boolean,

@@ -1,5 +1,5 @@
 import { addDoc, collection } from "firebase/firestore"
-import { auth, db } from "../../dist/config/firebase"
+import { auth, db } from "../../config/firebase"
 
 export const createFeedPost = async (heading: string, content: string, groupName: string, groupID: string | undefined) => {
     try{
