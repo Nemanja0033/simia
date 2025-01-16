@@ -7,7 +7,7 @@ import Loader from "../ui/Loader";
 import { useMember } from "../context/memberContext";
 import { acceptMember } from "../api/acceptMember";
 import { createFeedPost } from "../api/createFeedPost";
-import GroupFeedComponent from "../componnets/user/GroupFeedComponent";
+import GroupFeedComponent from "../componnets/GroupFeedComponent";
 import { leaveGroup } from "../api/leaveGroup";
 import { openModal } from "../helpers/openModal";
 

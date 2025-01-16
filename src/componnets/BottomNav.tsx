@@ -1,7 +1,7 @@
 import { HomeIcon, ShieldEllipsis, Users } from "lucide-react"
 import { Link } from "react-router-dom"
-import { useAdmin } from "../../context/adminContext"
-import { useMenu } from "../../context/menuContext";
+import { useAdmin } from "../context/adminContext"
+import { useMenu } from "../context/menuContext";
 
 const BottomNav = () => {
 

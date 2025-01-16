@@ -1,11 +1,11 @@
 import { LogOutIcon, Menu } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import { useAuth } from "../../context/authContext";
-import { logout } from "../../api/logout";
-import { useAdmin } from "../../context/adminContext";
-import Loader from "../../ui/Loader";
-import ThemeToggler from "../../ui/Theme";
-import { useMenu } from "../../context/menuContext";
+import { useAuth } from "../context/authContext";
+import { logout } from "../api/logout";
+import { useAdmin } from "../context/adminContext";
+import Loader from "..//ui/Loader";
+import ThemeToggler from "../ui/Theme";
+import { useMenu } from "../context/menuContext";
 
 const Navbar = () => {
   const { isAuth } = useAuth();

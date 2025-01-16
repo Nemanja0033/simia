@@ -3,7 +3,7 @@ import { PlusIcon } from "lucide-react"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { db } from "../../config/firebase"
-import GruopCard from "../componnets/user/GruopCard"
+import GruopCard from "../componnets/GruopCard"
 import Loader from "../ui/Loader"
 import { useMember } from "../context/memberContext"
 

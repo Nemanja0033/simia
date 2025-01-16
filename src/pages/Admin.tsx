@@ -1,4 +1,4 @@
-import Dashboard from "../componnets/admin/Dashboard"
+import Dashboard from "../componnets/Dashboard"
 
 const Admin = () => {
   return (

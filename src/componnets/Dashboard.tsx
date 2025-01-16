@@ -1,7 +1,7 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { db } from "../../../config/firebase";
-import Loader from "../../ui/Loader";
+import { db } from "../../config/firebase";
+import Loader from "../ui/Loader";
 import {
   AlarmClockCheck,
   Check,
@@ -11,11 +11,11 @@ import {
   Users,
   X,
 } from "lucide-react";
-import { activateUser } from "../../api/activateUser";
-import { deactivateUser } from "../../api/deactivateUser";
-import { deleteRequest } from "../../api/deleteRequest";
-import { clearUserHistory } from "../../api/clearUserHistory";
-import { deleteGroup } from "../../api/deleteGroup";
+import { activateUser } from "../api/activateUser";
+import { deactivateUser } from "../api/deactivateUser";
+import { deleteRequest } from "../api/deleteRequest";
+import { clearUserHistory } from "../api/clearUserHistory";
+import { deleteGroup } from "../api/deleteGroup";
 
 const Dashboard = () => {
   const [activeUsers, setActiveUsers] = useState<any[]>([]);
