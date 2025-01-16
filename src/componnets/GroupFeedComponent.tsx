@@ -1,6 +1,6 @@
 import { query, collection, where, getDocs, orderBy } from "firebase/firestore";
 import { useState, useEffect } from "react";
-import { auth, db } from "../../config/firebase";
+import { auth, db } from "../../dist/config/firebase";
 import { toggleLikePost } from "../api/likePost";
 import { toggleDislikePost } from "../api/unlikePost";
 

@@ -1,5 +1,5 @@
 import { query, collection, where, getDocs, doc, updateDoc } from "firebase/firestore";
-import { db } from "../../config/firebase";
+import { db } from "../../dist/config/firebase";
 
 export const addComment = async (heading: string, newComment: object) => {
     try {

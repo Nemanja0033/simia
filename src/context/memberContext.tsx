@@ -1,6 +1,6 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { auth, db } from "../../config/firebase";
+import { auth, db } from "../../dist/config/firebase";
 
 type MemberContextProps = {
     isMember: string | null; // Koristimo null da označimo nepoznato stanje

@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth, db } from "../../config/firebase";
+import { auth, db } from "../../dist/config/firebase";
 import { query, collection, where, getDocs } from "firebase/firestore";
 
 type AuthContextProps = {

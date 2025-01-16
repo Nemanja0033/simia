@@ -1,5 +1,5 @@
 import { collection, deleteDoc, getDocs, query, updateDoc, where } from "firebase/firestore";
-import { db } from "../../config/firebase";
+import { db } from "../../dist/config/firebase";
 
 export const deleteGroup = async (groupID: string, groupName: string) => {
     const confirmMsg = confirm("Are you sure you want to delete this group including all members and data?");

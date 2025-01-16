@@ -1,5 +1,5 @@
 import { collection, addDoc } from "firebase/firestore";
-import { db, auth } from "../../config/firebase";
+import { db, auth } from "../../dist/config/firebase";
 
 let counter = 0;
 

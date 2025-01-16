@@ -1,6 +1,6 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { db } from "../../config/firebase";
+import { db } from "../../dist/config/firebase";
 import Loader from "../ui/Loader";
 import {
   AlarmClockCheck,
