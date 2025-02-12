@@ -7,7 +7,6 @@ import { useAuth } from "../context/authContext";
 import Loader from "../ui/Loader";
 
 const ArticlePage = () => {
-
     const { heading } = useParams();
     const [article, setArticle] = useState<any[]>([]);
     const [comment, setComment] = useState<string>("");

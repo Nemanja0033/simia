@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import BlogPostCard from '../componnets/BlogPostCard';
+import BlogPostCard from '../components/BlogPostCard';
 import { ArrowDown } from 'lucide-react';
 import Loader from '../ui/Loader';
 
