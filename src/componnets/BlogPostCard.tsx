@@ -1,10 +1,6 @@
 import {  ArrowRight } from "lucide-react"
 import { Link } from "react-router-dom"
-
-type BlogProps = {
-    image: string,
-    heading: string,
-}
+import { BlogProps } from "../types/BlogPostCardType"
 
 const BlogPostCard = ({image, heading}: BlogProps) => {
 
