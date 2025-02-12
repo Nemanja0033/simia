@@ -1,5 +1,5 @@
 import { addDoc, collection } from "firebase/firestore"
-import { auth, db } from "../../config/firebase"
+import { auth, db } from "../lib/firebase"
 
 
 // call this function whenever user login or sign up, to track his activity

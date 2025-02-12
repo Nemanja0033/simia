@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from '../../config/firebase';
+import { auth } from '../lib/firebase';
 import { createUser } from "./createUser";
 import { trackLoginHistory } from "./trackLoginHistory";
 

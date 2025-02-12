@@ -1,7 +1,12 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { db } from "../../config/firebase";
+import { db } from "../lib/firebase";
 import Loader from "../ui/Loader";
+import { activateUser } from "../api/activateUser";
+import { deactivateUser } from "../api/deactivateUser";
+import { deleteRequest } from "../api/deleteRequest";
+import { clearUserHistory } from "../api/clearUserHistory";
+import { deleteGroup } from "../api/deleteGroup";
 import {
   AlarmClockCheck,
   Check,
@@ -11,11 +16,6 @@ import {
   Users,
   X,
 } from "lucide-react";
-import { activateUser } from "../api/activateUser";
-import { deactivateUser } from "../api/deactivateUser";
-import { deleteRequest } from "../api/deleteRequest";
-import { clearUserHistory } from "../api/clearUserHistory";
-import { deleteGroup } from "../api/deleteGroup";
 
 const Dashboard = () => {
   const [activeUsers, setActiveUsers] = useState<any[]>([]);
@@ -23,7 +23,6 @@ const Dashboard = () => {
   const [history, setHistory] = useState<any[]>([]);
   const [groups, setGroups] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-
   const [groupSearch, setGroupSearch] = useState<string>("");
   const [userSearch, setUserSearch] = useState<string>("");
 
@@ -38,7 +37,6 @@ const Dashboard = () => {
         getDocs(collection(db, "history")),
         getDocs(collection(db, "groups")),
       ]);
-
       setActiveUsers(users.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       setPendingUsers(requests.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       setHistory(histories.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -60,7 +58,6 @@ const Dashboard = () => {
 
   return (
     <div className="w-full h-screen md:flex flex-row justify-around items-center md:mt-10 mt-32">
-      {/* Active Users Section */}
       <div className="md:w-1/3 w-full h-96 m-3 rounded-md shadow-md">
         <h1 className="text-center font-bold flex justify-center gap-2 items-center text-primary">
           <Users /> Users ({activeUsers.length})
@@ -107,7 +104,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Pending Users Section */}
       <div className="md:w-1/3 flex-row w-full h-96 m-3 rounded-md shadow-md">
         <h1 className="text-center font-bold flex justify-center gap-2 items-center text-primary">
           <AlarmClockCheck /> Pending Users ({pendingUsers.length})
@@ -147,7 +143,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Groups Section */}
       <div className="md:w-1/3 w-full h-96 m-3 rounded-md shadow-md">
         <h1 className="text-center font-bold flex justify-center gap-2 items-center text-primary">
           <Group /> Groups ({groups.length})
@@ -194,7 +189,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Login History Section */}
       <div className="md:w-1/3 flex-row w-full h-96 m-3 rounded-md shadow-md">
         <h1 className="text-center font-bold flex justify-center gap-2 items-center text-primary">
           <History /> Login History ({history.length})

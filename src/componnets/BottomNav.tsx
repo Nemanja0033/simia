@@ -8,9 +8,8 @@ const BottomNav = () => {
   const { isAdmin } = useAdmin();
   const { isOpen } = useMenu();
 
-
   return (
-    <div>
+    <footer>
       {isOpen === true ? (
         <nav className="md:hidden fixed items-center backdrop-blur-lg z-50 bottom-0 flex justify-around gap-12 h-[60px] w-full">
           <Link className="text-primary" to={'/'}><HomeIcon /></Link>
@@ -27,7 +26,7 @@ const BottomNav = () => {
           )}
         </nav>
       ) : null}
-    </div>
+    </footer>
   );
   
 } 

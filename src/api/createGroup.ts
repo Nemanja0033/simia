@@ -1,5 +1,5 @@
 import { addDoc, collection, query, where, getDocs, updateDoc } from "firebase/firestore";
-import { auth, db } from "../../config/firebase";
+import { auth, db } from "../lib/firebase";
 
 let counter = 0;
 

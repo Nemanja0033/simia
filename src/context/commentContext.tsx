@@ -1,6 +1,6 @@
 import { query, collection, where, getDocs, doc, updateDoc } from "firebase/firestore";
 import { createContext, ReactNode, useContext, useState } from "react";
-import { db } from "../../config/firebase";
+import { db } from "../lib/firebase";
 
 type CommentContextProps = {
   addComment: any

@@ -1,5 +1,5 @@
 import { collection, getDocs, deleteDoc } from "firebase/firestore";
-import { db } from "../../config/firebase";
+import { db } from "../lib/firebase";
 
 export const clearUserHistory = async () => {
   try {

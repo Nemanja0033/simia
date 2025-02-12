@@ -1,5 +1,5 @@
 import { collection, query, where, getDocs, deleteDoc } from "firebase/firestore";
-import { db } from "../../config/firebase"; 
+import { db } from "../lib/firebase"; 
 
 export const deleteRequest = async (userID: string) => {
     try {

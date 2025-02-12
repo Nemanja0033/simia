@@ -1,5 +1,5 @@
 import { query, collection, where, getDocs, doc, updateDoc } from "firebase/firestore";
-import { auth, db } from "../../config/firebase";
+import { auth, db } from "../lib/firebase";
 
 
 export const groupRequest = async (groupName: string) => {

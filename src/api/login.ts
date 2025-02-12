@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../config/firebase";
+import { auth } from "../lib/firebase";
 import { trackLoginHistory } from "./trackLoginHistory";
 
 // login with existing account creds
