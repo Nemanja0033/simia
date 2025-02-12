@@ -2,9 +2,8 @@ import { DoorClosedIcon, DoorOpenIcon, Users } from "lucide-react"
 import { Link } from "react-router-dom"
 import { groupRequest } from "../api/groupRequest"
 import { useMember } from "../context/memberContext"
-import { auth } from "../lib/firebase"
 
-const GruopCard = ({name, description, members, groupID, moderator}: {name: string, description: string, members: [], groupID:string, moderator:string}) => {
+const GruopCard = ({name, description, members, groupID}: {name: string, description: string, members: [], groupID:string, moderator:string}) => {
 
   const { isMember } = useMember();
 
