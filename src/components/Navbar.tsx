@@ -4,7 +4,7 @@ import { useAuth } from "../context/authContext";
 import { logout } from "../api/logout";
 import { useAdmin } from "../context/adminContext";
 import Loader from "../ui/Loader";
-import ThemeToggler from "../ui/Theme";
+// import ThemeToggler from "../ui/Theme";
 import { useMenu } from "../context/menuContext";
 
 const Navbar = () => {
@@ -42,7 +42,6 @@ const Navbar = () => {
           Admin
           </Link>
         )}
-        <ThemeToggler />
       </div>
   
       <div className="md:hidden flex items-center">
@@ -51,13 +50,11 @@ const Navbar = () => {
             <Link className={`hover:text-primary ${isActive("/login") ? "border-b-2 border-primary" : ""}`} to="/login">
             <button className="btn btn-neutral btn-sm border-none  text-primary hover:bg-primary hover:text-white">Sign Up</button>
           </Link>
-          <ThemeToggler />
           <button onClick={toggleMenu}><Menu /></button>
           </div>
         ) : (
           <div className="flex items-center gap-5 hover:text-primary tracking-wider">
             <button className="btn btn-neutral btn-sm border-none  text-primary hover:bg-primary hover:text-white" onClick={logout}>Logout <LogOutIcon size={18} /></button>
-            <ThemeToggler />
             <button onClick={toggleMenu}><Menu /></button>
           </div>
         )}

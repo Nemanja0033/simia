@@ -1,30 +1,13 @@
-import { MoonIcon, SunIcon } from "lucide-react";
-import { useEffect, useState } from "react"
+// import { MoonIcon, SunIcon } from "lucide-react";
+// import { useTheme } from "../context/themeContext";
 
-const ThemeToggler = () => {
+// const ThemeToggler = () => {
+//     const { theme, toggleTheme } = useTheme()
+//   return (
+//     <div className="border-l pl-3">
+//        {theme == 'light' ? <MoonIcon className="hover:text-primary cursor-pointer" onClick={toggleTheme} /> : <SunIcon className="hover:text-primary cursor-pointer" onClick={toggleChange} />}
+//     </div>
+//   )
+// }
 
-    const [ theme, setTheme] = useState<any>(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
-
-    const toggleChange = () => {
-        if(theme == 'light'){
-            setTheme('dark')
-        }
-        else{
-            setTheme('light');
-        }
-    }
-
-    useEffect(() => {
-        localStorage.setItem('theme', theme);
-        const localTheme: any = localStorage.getItem('theme');
-        document.querySelector('html')?.setAttribute("data-theme", localTheme);
-    })
-
-  return (
-    <div className="border-l pl-3">
-       {theme == 'light' ? <MoonIcon className="hover:text-primary cursor-pointer" onClick={toggleChange} /> : <SunIcon className="hover:text-primary cursor-pointer" onClick={toggleChange} />}
-    </div>
-  )
-}
-
-export default ThemeToggler
+// export default ThemeToggler

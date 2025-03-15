@@ -7,19 +7,22 @@ import { AdminProvider } from './context/adminContext.tsx'
 import { MemberProvider } from './context/memberContext.tsx'
 import { CommentProvider } from './context/commentContext.tsx'
 import { MenuProvider } from './context/menuContext.tsx'
+import { ThemeProvider } from './context/themeContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <MenuProvider>
-      <CommentProvider>
-        <AuthProvider>
-            <AdminProvider>
-                <MemberProvider>
-                  <App />
-                </MemberProvider>
-            </AdminProvider>
-        </AuthProvider>
-      </CommentProvider>
-    </MenuProvider>
+    <ThemeProvider>
+      <MenuProvider>
+        <CommentProvider>
+          <AuthProvider>
+              <AdminProvider>
+                  <MemberProvider>
+                    <App />
+                  </MemberProvider>
+              </AdminProvider>
+          </AuthProvider>
+        </CommentProvider>
+      </MenuProvider>
+    </ThemeProvider>
   </StrictMode>,
 )
