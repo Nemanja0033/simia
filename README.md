@@ -13,6 +13,9 @@ The project was developed under a commission and is publicly displayed with the 
 - **Private Content within Groups**: Each group has a private feed where content is visible only to members.
 - **Blog Creation**: Users can create and publish their own blog posts.
 - **Reading and Commenting on Blog Posts**: Users can browse blog posts, read content, and engage through comments.
+- 
+- <img width="951" alt="admin dash" src="https://github.com/user-attachments/assets/0272ee47-9439-4da8-a304-ab15d63cc0ca" />
+  <img width="938" alt="simia" src="https://github.com/user-attachments/assets/af631509-72bf-4e7d-9a64-f81d733e5c52" />
   
 ## Technologies Used
 - **Frontend**: 
